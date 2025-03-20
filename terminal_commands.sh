@@ -12,3 +12,6 @@ git remote add origin https://github.com/USER/REPO.git
 
 # Enviar o código para o GitHub
 git push -u origin main
+
+# Executar o script de deploy
+npm run deploy
