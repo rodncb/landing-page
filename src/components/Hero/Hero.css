@@ -1,0 +1,284 @@
+@import url("https://fonts.googleapis.com/css2?family=Trend+Sans+One&display=swap");
+
+.top-banner {
+  width: 100%;
+  height: 32px;
+  background-color: #ff4b55;
+}
+
+.hero {
+  min-height: calc(100vh - 32px);
+  background: #1e1b3a;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+}
+
+.hero-container {
+  width: 100%;
+  padding: 2rem 0;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0;
+  padding: 0 2rem;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logo-text {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+  font-family: "Trend Sans One", sans-serif;
+}
+
+.title-container {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0;
+}
+
+.hero-content h1 {
+  font-size: 96px;
+  font-weight: 400;
+  line-height: 1;
+  color: white;
+  margin: 0;
+  letter-spacing: -1px;
+  font-family: "Trend Sans One", sans-serif;
+  width: 100%;
+  /* text-align: justify; */
+  padding: 0 2rem;
+  white-space: normal;
+  word-spacing: normal;
+}
+
+.hero-content h1 br {
+  display: none;
+}
+
+.hero-content h1 span {
+  display: block;
+  width: 100%;
+  text-align: justify;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: #ff6b6b;
+  margin: 0;
+  margin-top: 1.5rem;
+  font-weight: 500;
+  font-family: "Trend Sans One", sans-serif;
+  padding: 0 2rem;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: 0 2rem;
+}
+
+.primary-button {
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 1rem 3rem;
+  border-radius: 50px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  font-family: "Trend Sans One", sans-serif;
+}
+
+.primary-button:hover {
+  background-color: #ff5252;
+}
+
+.hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.main-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@media (max-width: 1400px) {
+  .hero-content h1 {
+    font-size: 82px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .hero-content h1 {
+    font-size: 72px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-container {
+    padding: 2rem;
+  }
+
+  .logo-container,
+  .hero-content h1,
+  .subtitle,
+  .hero-cta {
+    padding: 0 2rem;
+  }
+
+  .hero-content h1 {
+    font-size: 42px;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-container {
+    padding: 1.5rem;
+  }
+
+  .logo-container,
+  .hero-content h1,
+  .subtitle,
+  .hero-cta {
+    padding: 0 1.5rem;
+  }
+
+  .hero-content h1 {
+    font-size: 32px;
+  }
+}
+
+/* Tablet (768px até 1024px) */
+@media screen and (max-width: 1024px) {
+  .hero-content h1 {
+    font-size: 72px;
+  }
+
+  .hero-container {
+    padding: 1.5rem 0;
+  }
+
+  .subtitle {
+    font-size: 1.3rem;
+  }
+
+  .hero-cta {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .primary-button {
+    padding: 0.8rem 2.5rem;
+  }
+
+  .logo-container {
+    padding: 0 1.5rem;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Mobile (até 767px) */
+@media screen and (max-width: 767px) {
+  .top-banner {
+    height: 24px;
+  }
+
+  .hero {
+    min-height: calc(100vh - 24px);
+  }
+
+  .hero-container {
+    padding: 1rem 0;
+  }
+
+  .logo-container {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 0 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .logo {
+    height: 50px;
+    margin-bottom: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+  }
+
+  .hero-content h1 {
+    font-size: 36px;
+    text-align: center;
+    padding: 0 1rem;
+    line-height: 1.2;
+    margin-top: 1rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 0 1rem;
+    margin-top: 1rem;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+
+  .primary-button {
+    width: 100%;
+    max-width: 300px;
+    padding: 0.8rem 2rem;
+    font-size: 0.9rem;
+  }
+}

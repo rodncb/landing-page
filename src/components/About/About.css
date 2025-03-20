@@ -1,0 +1,184 @@
+@import url("https://fonts.cdnfonts.com/css/open-sauce-one");
+
+.about {
+  background-color: white;
+  padding: 2rem 0 4rem;
+  width: 100%;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  position: relative;
+  align-items: center;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%;
+  justify-content: center;
+}
+
+.about-content h2 {
+  font-family: "Open Sauce One", sans-serif;
+  font-size: 56px;
+  color: #6b4bff;
+  line-height: 1.1;
+  margin: 0;
+  font-weight: 400;
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.about-text p {
+  font-family: "Open Sauce One", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  margin: 0;
+  font-weight: 400;
+}
+
+.about-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100%;
+}
+
+.about-image {
+  width: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  height: 100%;
+}
+
+.main-image {
+  width: 100%;
+  display: block;
+  border-radius: 24px;
+  animation: none;
+}
+
+.about-icon {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.ai-icon {
+  width: 120px;
+  height: auto;
+  margin-left: 160px;
+}
+
+@media (max-width: 968px) {
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .about-content h2 {
+    font-size: 48px;
+    text-align: center;
+  }
+
+  .about-text {
+    text-align: center;
+  }
+
+  .about-icon {
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .ai-icon {
+    width: 100px;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .about {
+    padding: 1.5rem 0 3rem;
+  }
+
+  .about-container {
+    padding: 0 1rem;
+  }
+
+  .about-content h2 {
+    font-size: 36px;
+  }
+
+  .ai-icon {
+    width: 80px;
+  }
+}
+
+/* Tablet (768px até 1024px) */
+@media screen and (max-width: 1024px) {
+  .about-container {
+    gap: 2rem;
+    padding: 0 1.5rem;
+  }
+
+  .about-content h2 {
+    font-size: 42px;
+  }
+
+  .about-text p {
+    font-size: 15px;
+  }
+
+  .ai-icon {
+    width: 100px;
+    margin-left: 20px;
+  }
+}
+
+/* Mobile (até 767px) */
+@media screen and (max-width: 767px) {
+  .about {
+    padding: 1.5rem 0 2rem;
+  }
+
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .about-content h2 {
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .about-text p {
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .about-image {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .ai-icon {
+    width: 80px;
+    margin-left: 0;
+  }
+}
