@@ -1,12 +1,59 @@
-# React + Vite
+# Facilita.AI Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Landing page institucional da Facilita.AI, uma empresa especializada em soluções de automação e inteligência artificial para profissionais.
 
-Currently, two official plugins are available:
+## 🚀 Sobre o Projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A Facilita.AI é uma plataforma que integra fluxos de trabalho automatizados e tecnologia de Inteligência Artificial para auxiliar profissionais em sua expansão digital. Este projeto consiste em uma landing page moderna e responsiva que apresenta os principais serviços e diferenciais da empresa.
 
-## Expanding the ESLint configuration
+## 💻 Tecnologias Utilizadas
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React.js
+- Vite
+- CSS Moderno
+- Design Responsivo
+- GitHub Pages para deploy
+
+## 🌐 Deploy
+
+O site está disponível em: [https://rodncb.github.io/landing-page/](https://rodncb.github.io/landing-page/)
+
+## 🛠️ Instalação e Uso Local
+
+```bash
+# Clone o repositório
+git clone https://github.com/rodncb/landing-page.git
+
+# Entre no diretório
+cd landing-page
+
+# Instale as dependências
+npm install
+
+# Inicie o servidor de desenvolvimento
+npm run dev
+```
+
+## 📱 Recursos e Funcionalidades
+
+- Design moderno e responsivo
+- Seções informativas sobre serviços e benefícios
+- Integração com WhatsApp para contato direto
+- Otimizado para dispositivos móveis
+- Interface intuitiva e atraente
+
+## 🔄 Deploy e Atualizações
+
+Para fazer deploy de novas alterações:
+
+```bash
+npm run deploy
+```
+
+## 📝 Licença
+
+Este projeto está sob a licença [MIT](LICENSE).
+
+## 👨‍💻 Desenvolvido por
+
+Rodrigo Bezerra - [GitHub](https://github.com/rodncb)
