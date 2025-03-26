@@ -183,7 +183,7 @@
 }
 
 .hero-content h1 {
-  font-size: 7.5vw;
+  font-size: 5vw;
   font-weight: 500;
   line-height: 1.2;
   color: white;
@@ -200,6 +200,18 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: titlePulse 4s ease-in-out infinite alternate;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-content h1 .line1,
+.hero-content h1 .line2 {
+  display: block;
+  width: 100%;
+}
+
+.hero-content h1 .line2 {
+  margin-top: -5px; /* Ajuste fino para aproximar as linhas */
 }
 
 .hero-content h1 br {
@@ -322,7 +334,7 @@
 
 @media (max-width: 1400px) {
   .hero-content h1 {
-    font-size: 6.5vw;
+    font-size: 4.8vw;
   }
 
   .hero-container {
@@ -337,6 +349,10 @@
 
   .hero-container {
     padding: 0 2rem 1rem;
+  }
+
+  .hero-content h1 {
+    font-size: 4.5vw;
   }
 }
 
@@ -368,6 +384,10 @@
     filter: blur(60px);
     opacity: 0.15;
   }
+
+  .hero-content h1 {
+    font-size: 4.2vw;
+  }
 }
 
 @media (max-width: 768px) {
@@ -381,7 +401,7 @@
   }
 
   .hero-content h1 {
-    font-size: 10vw;
+    font-size: 6vw;
     text-align: center;
   }
 
@@ -394,6 +414,11 @@
   .tech-element-2,
   .tech-element-3 {
     opacity: 0.1;
+  }
+
+  .hero-content h1 .line1,
+  .hero-content h1 .line2 {
+    text-align: center;
   }
 }
 
@@ -428,10 +453,15 @@
   }
 
   .hero-content h1 {
-    font-size: 11vw;
+    font-size: 8vw;
     text-align: center;
     line-height: 1.2;
     margin-top: 0.3rem;
+  }
+
+  .hero-content h1 .line1,
+  .hero-content h1 .line2 {
+    text-align: center;
   }
 
   .subtitle {
@@ -465,8 +495,13 @@
   }
 
   .hero-content h1 {
-    font-size: 12vw;
+    font-size: 7.5vw;
     margin-top: 0;
+  }
+
+  .hero-content h1 .line1,
+  .hero-content h1 .line2 {
+    display: block;
   }
 
   .subtitle {

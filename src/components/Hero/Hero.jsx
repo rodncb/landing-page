@@ -27,7 +27,10 @@ const Hero = () => {
               </div>
             </div>
             <div className="title-container">
-              <h1>SOLUÇÕES INTELIGENTES QUE FACILITAM O SEU DIA A DIA.</h1>
+              <h1>
+                <div className="line1">SOLUÇÕES INTELIGENTES QUE</div>
+                <div className="line2">FACILITAM O SEU DIA A DIA.</div>
+              </h1>
             </div>
             <p className="subtitle">
               AUTOMATIZAMOS AS SUAS ROTINAS NA INTERNET
