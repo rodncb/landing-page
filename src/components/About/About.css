@@ -2,17 +2,17 @@
 
 .about {
   background-color: white;
-  padding: 2rem 0 4rem;
+  padding: 3rem 0;
   width: 100%;
 }
 
 .about-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 4rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 4rem;
   position: relative;
   align-items: center;
 }
@@ -85,14 +85,21 @@
   margin-left: 160px;
 }
 
+@media (max-width: 1200px) {
+  .about-container {
+    padding: 0 3rem;
+  }
+}
+
 @media (max-width: 968px) {
   .about-container {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 3rem;
+    padding: 0 2.5rem;
   }
 
   .about-content h2 {
-    font-size: 48px;
+    font-size: 42px;
     text-align: center;
   }
 
@@ -102,30 +109,36 @@
 
   .about-icon {
     justify-content: center;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
   }
 
   .ai-icon {
-    width: 100px;
+    width: 80px;
     margin-left: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .about-container {
+    padding: 0 2rem;
   }
 }
 
 @media (max-width: 480px) {
   .about {
-    padding: 1.5rem 0 3rem;
+    padding: 2rem 0;
   }
 
   .about-container {
-    padding: 0 1rem;
+    padding: 0 1.5rem;
   }
 
   .about-content h2 {
-    font-size: 36px;
+    font-size: 32px;
   }
 
   .ai-icon {
-    width: 80px;
+    width: 60px;
   }
 }
 
@@ -147,38 +160,5 @@
   .ai-icon {
     width: 100px;
     margin-left: 20px;
-  }
-}
-
-/* Mobile (até 767px) */
-@media screen and (max-width: 767px) {
-  .about {
-    padding: 1.5rem 0 2rem;
-  }
-
-  .about-container {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    padding: 0 1rem;
-  }
-
-  .about-content h2 {
-    font-size: 32px;
-    text-align: center;
-  }
-
-  .about-text p {
-    text-align: center;
-    font-size: 14px;
-  }
-
-  .about-image {
-    max-width: 100%;
-    margin: 0 auto;
-  }
-
-  .ai-icon {
-    width: 80px;
-    margin-left: 0;
   }
 }

@@ -12,11 +12,19 @@ const Hero = () => {
     <>
       <div className="top-banner"></div>
       <section className="hero">
+        <div className="tech-element-1"></div>
+        <div className="tech-element-2"></div>
+        <div className="tech-element-3"></div>
+        <div className="tech-line-1"></div>
+        <div className="tech-line-2"></div>
+
         <div className="hero-container">
           <div className="hero-content">
             <div className="logo-container">
               <img src={logo} alt="Facilita.ai Logo" className="logo" />
-              <span className="logo-text">FACILITA.AI</span>
+              <div className="logo-text">
+                FACILITA <span className="ai-highlight">AI</span>
+              </div>
             </div>
             <div className="title-container">
               <h1>SOLUÇÕES INTELIGENTES QUE FACILITAM O SEU DIA A DIA.</h1>
