@@ -17,5 +17,8 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "vite": "^6.2.2"
+  },
+  "dependencies": {
+    "@n8n/chat": "^0.27.1"
   }
 }

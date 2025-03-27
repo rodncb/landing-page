@@ -5,6 +5,7 @@ import Features from "./components/Features/Features";
 import Security from "./components/Security/Security";
 import WhyUs from "./components/WhyUs/WhyUs";
 import Footer from "./components/Footer/Footer";
+import Chat from "./components/Chat/Chat";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Security />
       <WhyUs />
       <Footer />
+      <Chat />
     </div>
   );
 }
