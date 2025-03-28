@@ -29,11 +29,8 @@ const Chat = () => {
 
   // Validar formulário de leads quando os campos mudam
   useEffect(() => {
-    // Validação básica de e-mail
     const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(leadEmail);
-    // Nome deve ter pelo menos 3 caracteres
     const isNameValid = leadName.trim().length >= 3;
-    // Telefone deve ter pelo menos 10 caracteres
     const isPhoneValid = leadPhone.trim().length >= 10;
 
     setIsLeadFormValid(isEmailValid && isNameValid && isPhoneValid);
@@ -58,7 +55,6 @@ const Chat = () => {
 
   // Função para salvar os dados do lead
   const saveLead = () => {
-    // Aqui você pode implementar a lógica para salvar o lead em um banco de dados ou CRM
     const leadData = {
       name: leadName,
       email: leadEmail,
@@ -67,12 +63,8 @@ const Chat = () => {
       conversationId: conversationId,
     };
 
-    // Você pode implementar aqui a lógica para enviar esses dados para seu backend
-
-    // Ocultar o formulário e mostrar a mensagem de agradecimento
     setShowLeadForm(false);
 
-    // Adicionar mensagem de agradecimento
     const welcomeMessage = {
       id: `bot_${Date.now()}`,
       text: `Obrigado, ${leadName}! Seus dados foram recebidos com sucesso. Em breve entraremos em contato através do e-mail fornecido.\n\nComo posso ajudar você hoje?`,
@@ -88,9 +80,7 @@ const Chat = () => {
     try {
       setIsTyping(true);
 
-      // Simular resposta com respostas pré-definidas
       const simulateResponse = (message) => {
-        // Respostas padrão baseadas em palavras-chave simples
         const defaultResponses = {
           default:
             "Obrigado pelo seu contato! Sou o assistente virtual da Facilita.AI. Como posso ajudar com sua expansão digital hoje?",
@@ -104,7 +94,6 @@ const Chat = () => {
             "Nossa plataforma integra fluxos de trabalho automatizados e tecnologia de IA para simplificar sua expansão digital. Ajudamos a automatizar conteúdo, gerenciar redes sociais e construir sua presença online.",
         };
 
-        // Verificar palavras-chave simples
         const messageLower = message.toLowerCase();
 
         if (
@@ -133,7 +122,6 @@ const Chat = () => {
         return defaultResponses.default;
       };
 
-      // Simular um pequeno atraso para parecer mais natural
       setTimeout(() => {
         const responseText = simulateResponse(message);
 
@@ -166,11 +154,9 @@ const Chat = () => {
       timestamp: new Date().toISOString(),
     };
 
-    // Adiciona a mensagem do usuário à lista de mensagens
     setMessages((prev) => [...prev, userMessage]);
     setNewMessage("");
 
-    // Enviar mensagem para processamento
     await sendMessage(userMessage.text);
   };
 
@@ -185,8 +171,6 @@ const Chat = () => {
   // Abrir o chat
   const openChat = () => {
     setIsChatOpen(true);
-
-    // Resetamos o estado do formulário de lead quando o chat é aberto
     setShowLeadForm(true);
     setLeadName("");
     setLeadEmail("");
@@ -196,7 +180,6 @@ const Chat = () => {
 
   return (
     <>
-      {/* Chat Icon Button */}
       {!isChatOpen && (
         <button className="chat-icon-button" onClick={openChat}>
           <svg viewBox="0 0 24 24" className="chat-icon">
@@ -208,7 +191,6 @@ const Chat = () => {
         </button>
       )}
 
-      {/* Chat Window */}
       {isChatOpen && (
         <div className="chat-window">
           <div className="chat-header">
@@ -231,7 +213,6 @@ const Chat = () => {
           </div>
 
           {showLeadForm ? (
-            // Formulário de captura de lead
             <div className="chat-messages">
               <div className="chat-message bot-message">
                 <div className="bot-avatar">
@@ -304,7 +285,6 @@ const Chat = () => {
               </div>
             </div>
           ) : (
-            // Chat normal
             <>
               <div className="chat-messages">
                 {messages.map((msg) => (
