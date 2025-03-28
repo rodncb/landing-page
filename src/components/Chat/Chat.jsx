@@ -12,6 +12,7 @@ const Chat = () => {
   const [showLeadForm, setShowLeadForm] = useState(true);
   const [leadName, setLeadName] = useState("");
   const [leadEmail, setLeadEmail] = useState("");
+  const [leadPhone, setLeadPhone] = useState("");
   const [isLeadFormValid, setIsLeadFormValid] = useState(false);
 
   // Ref para scroll automático
@@ -19,21 +20,6 @@ const Chat = () => {
 
   // Gerar ID único para esta conversa
   const [conversationId, setConversationId] = useState("");
-
-  // Estado para armazenar a chave API
-  const [apiKey, setApiKey] = useState("");
-
-  // Função para obter a chave API - em produção, pode ser substituída por uma chamada a um serviço mais seguro
-  const getApiKey = () => {
-    // Tenta obter a chave da variável de ambiente (em desenvolvimento)
-    if (import.meta.env.VITE_ANTHROPIC_API_KEY) {
-      return import.meta.env.VITE_ANTHROPIC_API_KEY;
-    }
-
-    // Em produção, a chave é injetada durante o build ou obtida de um serviço seguro
-    // Esta é apenas uma solução temporária - em produção real, use um backend seguro
-    return apiKey;
-  };
 
   // Detectar ambiente
   const isDevelopment =
@@ -47,9 +33,11 @@ const Chat = () => {
     const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(leadEmail);
     // Nome deve ter pelo menos 3 caracteres
     const isNameValid = leadName.trim().length >= 3;
+    // Telefone deve ter pelo menos 10 caracteres
+    const isPhoneValid = leadPhone.trim().length >= 10;
 
-    setIsLeadFormValid(isEmailValid && isNameValid);
-  }, [leadName, leadEmail]);
+    setIsLeadFormValid(isEmailValid && isNameValid && isPhoneValid);
+  }, [leadName, leadEmail, leadPhone]);
 
   // Gerar um ID único para a conversa
   useEffect(() => {
@@ -74,6 +62,7 @@ const Chat = () => {
     const leadData = {
       name: leadName,
       email: leadEmail,
+      phone: leadPhone,
       timestamp: new Date().toISOString(),
       conversationId: conversationId,
     };
@@ -94,13 +83,12 @@ const Chat = () => {
     setMessages([welcomeMessage]);
   };
 
-  // Função para enviar mensagem para a API da Anthropic
-  const sendMessageToAnthropic = async (message, type = "user") => {
+  // Função para enviar mensagem para o chat
+  const sendMessage = async (message) => {
     try {
       setIsTyping(true);
 
-      // Simular resposta enquanto não temos o proxy configurado
-      // Em produção, esta parte seria substituída pela chamada real ao serviço
+      // Simular resposta com respostas pré-definidas
       const simulateResponse = (message) => {
         // Respostas padrão baseadas em palavras-chave simples
         const defaultResponses = {
@@ -161,102 +149,6 @@ const Chat = () => {
       }, 1500);
 
       return true;
-
-      // Código original comentado - será substituído por um proxy seguro em produção
-      /*
-      // Verificar se temos uma chave API
-      const currentApiKey = getApiKey();
-      if (!currentApiKey) {
-        const errorMessage = {
-          id: `error_${Date.now()}`,
-          text: "Desculpe, não foi possível conectar ao serviço. Por favor, tente novamente mais tarde.",
-          sender: "bot",
-          timestamp: new Date().toISOString(),
-        };
-        
-        setMessages((prev) => [...prev, errorMessage]);
-        setIsTyping(false);
-        return false;
-      }
-
-      // Obtém histórico da conversa para contexto
-      const conversationHistory = messages
-        .filter((msg) => msg.sender === "user" || msg.sender === "bot")
-        .map((msg) => ({
-          role: msg.sender === "user" ? "user" : "assistant",
-          content: msg.text,
-        }));
-
-      // Adiciona a mensagem atual
-      conversationHistory.push({
-        role: "user",
-        content: message,
-      });
-
-      // Configuração da requisição para a API da Anthropic
-      const payload = {
-        model: "claude-3-haiku-20240307", // Modelo mais econômico
-        messages: conversationHistory,
-        max_tokens: 1024,
-        temperature: 0.7,
-        system:
-          "Você é um assistente virtual da Facilita.AI, uma plataforma que torna o processo de expansão digital simples, eficiente e acessível a profissionais de todas as áreas. Seja educado, prestativo e cordial. Forneça respostas diretas e úteis sobre a Facilita.AI e seus serviços.",
-      };
-
-      // Configuração do fetch
-      const fetchOptions = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-api-key": currentApiKey,
-          "anthropic-version": "2023-06-01",
-        },
-        body: JSON.stringify(payload),
-      };
-
-      try {
-        const response = await fetch(
-          "https://api.anthropic.com/v1/messages",
-          fetchOptions
-        );
-
-        if (!response.ok) {
-          throw new Error(`API da Anthropic retornou erro: ${response.status}`);
-        }
-
-        const responseData = await response.json();
-
-        if (
-          responseData &&
-          responseData.content &&
-          responseData.content.length > 0
-        ) {
-          const botMessage = {
-            id: `resp_${Date.now()}`,
-            text: responseData.content[0].text,
-            sender: "bot",
-            timestamp: new Date().toISOString(),
-          };
-
-          setMessages((prev) => [...prev, botMessage]);
-          setIsTyping(false);
-          return true;
-        } else {
-          throw new Error("Resposta da API não contém conteúdo válido");
-        }
-      } catch (fetchError) {
-        // Em caso de erro, mostrar uma mensagem amigável
-        const errorMessage = {
-          id: `error_${Date.now()}`,
-          text: "Desculpe, estou com problemas para processar sua mensagem no momento. Por favor, tente novamente mais tarde.",
-          sender: "bot",
-          timestamp: new Date().toISOString(),
-        };
-
-        setMessages((prev) => [...prev, errorMessage]);
-        setIsTyping(false);
-      }
-      */
     } catch (error) {
       setIsTyping(false);
       return false;
@@ -278,8 +170,8 @@ const Chat = () => {
     setMessages((prev) => [...prev, userMessage]);
     setNewMessage("");
 
-    // Enviar mensagem para a API da Anthropic
-    await sendMessageToAnthropic(userMessage.text);
+    // Enviar mensagem para processamento
+    await sendMessage(userMessage.text);
   };
 
   // Lidar com tecla Enter
@@ -298,6 +190,7 @@ const Chat = () => {
     setShowLeadForm(true);
     setLeadName("");
     setLeadEmail("");
+    setLeadPhone("");
     setMessages([]);
   };
 
@@ -384,6 +277,19 @@ const Chat = () => {
                     value={leadEmail}
                     onChange={(e) => setLeadEmail(e.target.value)}
                     placeholder="Digite seu e-mail"
+                    required
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="leadPhone">Seu melhor telefone:</label>
+                  <input
+                    type="tel"
+                    id="leadPhone"
+                    className="chat-input"
+                    value={leadPhone}
+                    onChange={(e) => setLeadPhone(e.target.value)}
+                    placeholder="Digite seu telefone"
                     required
                   />
                 </div>
