@@ -348,3 +348,12 @@
   background-color: #cccccc;
   cursor: not-allowed;
 }
+
+.ai-notice {
+  background-color: #f8f9fa;
+  color: #6c757d;
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 5px;
+  border-bottom: 1px solid #e9ecef;
+}

@@ -17,10 +17,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
   margin-bottom: 4rem;
-  text-align: left;
-  gap: 2rem;
+  text-align: center;
 }
 
 .why-us-title h2 {
@@ -30,23 +29,6 @@
   line-height: 1.1;
   margin: -20px;
   font-weight: 400;
-}
-
-.why-us-logo {
-  width: 180px;
-  height: 180px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 2rem;
-}
-
-.logo-image {
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
-  filter: drop-shadow(0 0 15px rgba(255, 75, 85, 0.3));
-  margin-left: 10px;
 }
 
 .why-us-features {
@@ -115,12 +97,6 @@
 }
 
 @media (max-width: 768px) {
-  .why-us-header {
-    flex-direction: column;
-    text-align: center;
-    gap: 2rem;
-  }
-
   .why-us-title h2 {
     font-size: 42px;
   }
@@ -145,5 +121,26 @@
 
   .feature-content h3 {
     font-size: 20px;
+  }
+}
+/* Highlight text style */
+.highlight-text {
+  background: linear-gradient(135deg, #ff6b6b, #6b4bff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+}
+
+/* Update grid for 4 cards */
+.why-us-features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .why-us-features {
+    grid-template-columns: 1fr;
   }
 }

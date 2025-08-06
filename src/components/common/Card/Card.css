@@ -1,0 +1,313 @@
+/* Card Component - FacilitaAI Design System */
+
+.card {
+  /* Apple-inspired base styles */
+  display: block;
+  width: 100%;
+  border-radius: var(--radius-xl);
+  transition: all var(--transition-spring);
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Card variants */
+.card--default {
+  background: var(--white);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--gray-200);
+}
+
+.card--elevated {
+  background: var(--white);
+  box-shadow: var(--shadow-lg);
+  border: none;
+}
+
+.card--glass {
+  background: var(--gradient-glass);
+  backdrop-filter: var(--backdrop-blur-md);
+  -webkit-backdrop-filter: var(--backdrop-blur-md);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: var(--shadow-lg);
+}
+
+.card--outline {
+  background: transparent;
+  border: 2px solid var(--gray-200);
+  box-shadow: none;
+}
+
+.card--gradient {
+  background: var(--gradient-hero);
+  color: var(--white);
+  border: none;
+  box-shadow: var(--shadow-lg);
+}
+
+.card--service {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  box-shadow: var(--shadow-service-card);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  position: relative;
+  min-height: var(--services-card-min-height);
+}
+
+.card--service::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-button-primary);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.card--service:hover {
+  transform: translateY(var(--hover-lift-distance))
+    scale(var(--hover-scale-factor));
+  box-shadow: var(--shadow-service-card-hover);
+}
+
+.card--service:hover::before {
+  opacity: 1;
+}
+
+/* Padding variants */
+.card--padding-none {
+  padding: 0;
+}
+
+.card--padding-sm {
+  padding: var(--space-md);
+}
+
+.card--padding-md {
+  padding: var(--space-lg);
+}
+
+.card--padding-lg {
+  padding: var(--space-xl);
+}
+
+.card--padding-xl {
+  padding: var(--space-2xl);
+}
+
+/* Apple-inspired interactive states */
+.card--hover:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: var(--shadow-xl);
+}
+
+.card--clickable {
+  cursor: pointer;
+}
+
+.card--clickable:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: var(--shadow-lg);
+}
+
+.card--clickable:active {
+  transform: var(--transform-scale-active);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.1s ease-out;
+}
+
+/* Focus styles for accessibility */
+.card--clickable:focus-visible {
+  outline: 2px solid var(--primary-blue);
+  outline-offset: 2px;
+}
+
+/* Special card types */
+.card--portfolio {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-portfolio-card);
+  transition: all var(--transition-spring);
+  aspect-ratio: var(--portfolio-card-aspect);
+  position: relative;
+}
+
+.card--portfolio:hover {
+  transform: translateY(-6px) scale(1.02) rotateX(2deg);
+  box-shadow: var(--shadow-portfolio-card-hover);
+}
+
+.card--portfolio::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: var(--gradient-portfolio-overlay);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  pointer-events: none;
+}
+
+.card--portfolio:hover::after {
+  opacity: 1;
+}
+
+.card--testimonial {
+  background: var(--white);
+  border-left: 4px solid var(--primary-red);
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.card--testimonial::before {
+  content: '"';
+  position: absolute;
+  top: var(--space-md);
+  left: var(--space-md);
+  font-size: var(--text-4xl);
+  color: var(--primary-red-light);
+  font-family: var(--font-family-primary);
+  line-height: 1;
+  opacity: 0.3;
+}
+
+.card--team {
+  background: var(--white);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+.card--team:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: var(--shadow-xl);
+}
+
+.card--floating {
+  background: var(--white);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-2xl);
+  transform: translateZ(0);
+  will-change: transform;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.card--floating:hover {
+  transform: translateY(-8px) rotateX(10deg) rotateY(5deg);
+  box-shadow: var(--shadow-3xl);
+}
+
+/* Card content helpers */
+.card__header {
+  margin-bottom: var(--space-lg);
+}
+
+.card__title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--gray-900);
+  margin-bottom: var(--space-sm);
+  line-height: var(--leading-tight);
+}
+
+.card--gradient .card__title {
+  color: var(--white);
+}
+
+.card__subtitle {
+  font-size: var(--text-lg);
+  color: var(--gray-600);
+  font-weight: var(--font-medium);
+}
+
+.card--gradient .card__subtitle {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.card__content {
+  color: var(--gray-700);
+  line-height: var(--leading-relaxed);
+}
+
+.card--gradient .card__content {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.card__footer {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--gray-200);
+}
+
+.card--gradient .card__footer {
+  border-top-color: rgba(255, 255, 255, 0.2);
+}
+
+.card__image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card__icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--space-md);
+  color: var(--primary-blue);
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .card--padding-lg {
+    padding: var(--space-lg);
+  }
+
+  .card--padding-xl {
+    padding: var(--space-xl);
+  }
+
+  .card__title {
+    font-size: var(--text-xl);
+  }
+
+  .card--portfolio:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+
+  .card--team:hover {
+    transform: translateY(-3px);
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card--hover:hover,
+  .card--clickable:hover,
+  .card--portfolio:hover,
+  .card--team:hover {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .card--default,
+  .card--elevated {
+    border: 2px solid var(--gray-400);
+  }
+
+  .card--outline {
+    border-width: 3px;
+  }
+}

@@ -4,7 +4,7 @@ import aboutImage2 from "../../images/Bloco2Img2.png";
 
 const About = () => {
   return (
-    <section className="about">
+    <section id="sobre" className="about">
       <div className="about-container">
         <div className="about-content">
           <h2>

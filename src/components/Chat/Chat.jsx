@@ -8,6 +8,9 @@ const Chat = () => {
   const [newMessage, setNewMessage] = useState("");
   const [isTyping, setIsTyping] = useState(false);
 
+  // Variável para armazenar a data e hora atual
+  const [currentDateTime, setCurrentDateTime] = useState(new Date());
+
   // Estado para o formulário de captura de leads
   const [showLeadForm, setShowLeadForm] = useState(true);
   const [leadName, setLeadName] = useState("");
@@ -75,11 +78,114 @@ const Chat = () => {
     setMessages([welcomeMessage]);
   };
 
+  // Atualizar a data e hora a cada minuto
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentDateTime(new Date());
+    }, 60000); // Atualiza a cada minuto
+
+    return () => clearInterval(timer);
+  }, []);
+
   // Função para enviar mensagem para o chat
   const sendMessage = async (message) => {
     try {
       setIsTyping(true);
 
+      // Verificar se estamos em modo de desenvolvimento ou se devemos usar respostas simuladas
+      if (isDevelopment) {
+        try {
+          // URL do servidor LM Studio
+          const apiUrl = "http://127.0.0.1:8080/v1/chat/completions";
+
+          // Formatar a data e hora atual para informar ao modelo
+          const formattedDateTime = currentDateTime.toLocaleString("pt-BR", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+          });
+
+          // Preparar o payload para a API do LM Studio
+          const payload = {
+            model: "gemma-3-1b-it",
+            messages: [
+              {
+                role: "system",
+                content: `Você é o assistente virtual da Facilita.AI, uma plataforma que automatiza e simplifica tarefas repetitivas para equipes de marketing, vendas e atendimento. Hoje é ${formattedDateTime}. 
+
+REGRAS IMPORTANTES:
+1. Suas respostas devem ser concisas, com no máximo 3 linhas.
+2. Não use asteriscos (*) nem emojis em suas respostas.
+3. Sempre termine perguntando se há algo mais em que possa ajudar.
+4. Mantenha um tom profissional e amigável.
+5. NÃO forneça informações sobre preços específicos. Para perguntas sobre preços, diga apenas que os planos são personalizados e que um consultor entrará em contato em breve para discutir as melhores opções para o negócio.
+6. Se o usuário insistir em saber preços, seja firme e explique que a política da empresa é que a equipe comercial entrará em contato para oferecer um plano personalizado.
+7. Para perguntas sobre a hora atual, consulte a variável formattedDateTime que contém a data e hora atuais.`,
+              },
+              {
+                role: "user",
+                content: message,
+              },
+            ],
+            temperature: 0.7,
+            max_tokens: 150, // Reduzido para forçar respostas mais curtas
+          };
+
+          // Fazer a chamada à API
+          const response = await fetch(apiUrl, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+          });
+
+          if (!response.ok) {
+            throw new Error(`Erro na API: ${response.status}`);
+          }
+
+          const data = await response.json();
+
+          // Extrair a resposta do modelo
+          let responseText = data.choices[0].message.content;
+
+          // Processar a resposta para garantir que não tenha asteriscos nem emojis
+          responseText = responseText.replace(/\*/g, "");
+
+          // Verificar se a resposta contém informações sobre preços específicos
+          if (
+            /R\$\s*\d+/.test(responseText) ||
+            /reais|valor específico|custa/.test(responseText.toLowerCase())
+          ) {
+            responseText =
+              "Nossos planos são personalizados de acordo com as necessidades do seu negócio. Nossa equipe comercial entrará em contato para discutir as melhores opções para você. Posso ajudar com mais alguma coisa?";
+          }
+
+          // Verificar se a resposta já termina com uma pergunta
+          if (!responseText.match(/\?$/)) {
+            responseText += "\n\nPosso ajudar com mais alguma coisa?";
+          }
+
+          const botMessage = {
+            id: `resp_${Date.now()}`,
+            text: responseText,
+            sender: "bot",
+            timestamp: new Date().toISOString(),
+          };
+
+          setMessages((prev) => [...prev, botMessage]);
+          setIsTyping(false);
+          return true;
+        } catch (error) {
+          console.error("Erro ao conectar com LM Studio:", error);
+          // Se falhar, cai no modo de respostas simuladas abaixo
+        }
+      }
+
+      // Código existente para respostas simuladas (como fallback)
       const simulateResponse = (message) => {
         const defaultResponses = {
           default:
@@ -138,6 +244,7 @@ const Chat = () => {
 
       return true;
     } catch (error) {
+      console.error("Erro ao processar mensagem:", error);
       setIsTyping(false);
       return false;
     }
@@ -211,6 +318,14 @@ const Chat = () => {
               &times;
             </button>
           </div>
+
+          {/* Show AI notice only when chat has started (lead form is not showing) */}
+          {!showLeadForm && (
+            <div className="ai-notice">
+              Este é um assistente de IA em treinamento. Respostas podem não ser
+              precisas.
+            </div>
+          )}
 
           {showLeadForm ? (
             <div className="chat-messages">

@@ -1,5 +1,7 @@
 import "./App.css";
+import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
+import { ServicesGrid } from "./components/Services";
 import About from "./components/About/About";
 import Features from "./components/Features/Features";
 import Security from "./components/Security/Security";
@@ -10,9 +12,11 @@ import Chat from "./components/Chat/Chat";
 function App() {
   return (
     <div className="app">
+      <Header />
       <Hero />
-      <About />
-      <Features />
+      <ServicesGrid />
+      {/* <About /> */}
+      {/* <Features /> */}
       <Security />
       <WhyUs />
       <Footer />

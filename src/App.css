@@ -1,31 +1,10 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* Import new global styles */
+@import "./styles/globals.css";
 
-body {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #333;
-  line-height: 1.5;
-}
-
-#root {
+/* App specific styles */
+.app {
   width: 100%;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
-
-main {
-  width: 100%;
-  min-height: 100vh;
-}
-
-button {
-  font-family: inherit;
-}
-
-/* Removendo todos os outros estilos do template Vite */

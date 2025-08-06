@@ -1,0 +1,306 @@
+/* Design Tokens - Sistema de Design FacilitaAI Software House */
+
+:root {
+  /* Cores primárias - Manter identidade atual */
+  --primary-red: #ff4b55;
+  --primary-red-light: #ff6b6b;
+  --primary-red-hover: #ff3b45;
+  --primary-blue: #6b4bff;
+  --primary-blue-light: #8b6bff;
+  --primary-blue-hover: #5b3bef;
+  --primary-blue-dark: #0c1640;
+  --primary-blue-medium: #1a2456;
+
+  /* Cores de status - Apple inspired */
+  --success: #34d399;
+  --success-light: #6ee7b7;
+  --warning: #fbbf24;
+  --warning-light: #fcd34d;
+  --error: #ef4444;
+  --error-light: #f87171;
+  --info: #3b82f6;
+  --info-light: #60a5fa;
+
+  /* Cores neutras */
+  --white: #ffffff;
+  --black: #000000;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+
+  /* Gradientes - Software House Theme */
+  --gradient-hero: linear-gradient(180deg, #0c1640 0%, #1a2456 100%);
+  --gradient-hero-overlay: linear-gradient(
+    135deg,
+    rgba(12, 22, 64, 0.95) 0%,
+    rgba(26, 36, 86, 0.9) 100%
+  );
+  --gradient-button-primary: linear-gradient(135deg, #ff6b6b 0%, #ff4b55 100%);
+  --gradient-button-secondary: linear-gradient(
+    135deg,
+    #8b6bff 0%,
+    #6b4bff 100%
+  );
+  --gradient-text: linear-gradient(90deg, #ffffff, #ff6b6b);
+  --gradient-text-blue: linear-gradient(90deg, #6b4bff, #8b6bff);
+  --gradient-card: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.05)
+  );
+  --gradient-service-card: linear-gradient(
+    135deg,
+    rgba(107, 75, 255, 0.05) 0%,
+    rgba(255, 75, 85, 0.05) 100%
+  );
+  --gradient-portfolio-overlay: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+
+  /* Sistema de espaçamento - Apple inspired */
+  --space-xs: 0.5rem; /* 8px */
+  --space-sm: 1rem; /* 16px */
+  --space-md: 1.5rem; /* 24px */
+  --space-lg: 2rem; /* 32px */
+  --space-xl: 3rem; /* 48px */
+  --space-2xl: 4rem; /* 64px */
+  --space-3xl: 6rem; /* 96px */
+  --space-4xl: 8rem; /* 128px */
+
+  /* Border Radius - Apple style */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-full: 50px;
+
+  /* Sombras - Apple-inspired depth system */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.16);
+  --shadow-2xl: 0 24px 64px rgba(0, 0, 0, 0.2);
+  --shadow-3xl: 0 32px 80px rgba(0, 0, 0, 0.24);
+
+  /* Sombras coloridas - Software House Theme */
+  --shadow-red: 0 8px 32px rgba(255, 75, 85, 0.15);
+  --shadow-red-hover: 0 12px 40px rgba(255, 75, 85, 0.25);
+  --shadow-red-intense: 0 16px 48px rgba(255, 75, 85, 0.3);
+  --shadow-blue: 0 8px 32px rgba(107, 75, 255, 0.15);
+  --shadow-blue-hover: 0 12px 40px rgba(107, 75, 255, 0.25);
+  --shadow-blue-intense: 0 16px 48px rgba(107, 75, 255, 0.3);
+
+  /* Sombras para cards de serviço */
+  --shadow-service-card: 0 4px 20px rgba(107, 75, 255, 0.08);
+  --shadow-service-card-hover: 0 8px 32px rgba(107, 75, 255, 0.15);
+  --shadow-portfolio-card: 0 6px 24px rgba(0, 0, 0, 0.1);
+  --shadow-portfolio-card-hover: 0 12px 40px rgba(0, 0, 0, 0.15);
+  --shadow-chat-widget: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-floating-button: 0 4px 16px rgba(255, 75, 85, 0.2);
+
+  /* Sombras internas - Apple glass effect */
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  --shadow-inset-dark: inset 0 1px 0 rgba(0, 0, 0, 0.1);
+
+  /* Tipografia */
+  --font-family-primary: "Trend Sans One", "Inter", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+  --font-family-secondary: "Inter", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", sans-serif;
+
+  /* Font sizes - Responsive */
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem; /* 16px */
+  --text-lg: 1.125rem; /* 18px */
+  --text-xl: 1.25rem; /* 20px */
+  --text-2xl: 1.5rem; /* 24px */
+  --text-3xl: 1.875rem; /* 30px */
+  --text-4xl: 2.25rem; /* 36px */
+  --text-5xl: 3rem; /* 48px */
+  --text-6xl: 3.75rem; /* 60px */
+  --text-7xl: 4.5rem; /* 72px */
+  --text-8xl: 6rem; /* 96px */
+  --text-9xl: 8rem; /* 128px */
+
+  /* Line heights */
+  --leading-none: 1;
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+
+  /* Font weights */
+  --font-thin: 100;
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+  --font-black: 900;
+
+  /* Z-index scale */
+  --z-0: 0;
+  --z-10: 10;
+  --z-20: 20;
+  --z-30: 30;
+  --z-40: 40;
+  --z-50: 50;
+  --z-auto: auto;
+
+  /* Transitions - Apple-inspired easing */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slower: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-spring: 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  /* Breakpoints (for reference in JS) */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  /* Apple-inspired blur effects */
+  --blur-xs: 4px;
+  --blur-sm: 8px;
+  --blur-md: 12px;
+  --blur-lg: 16px;
+  --blur-xl: 24px;
+  --blur-2xl: 40px;
+
+  /* Apple-style backdrop filters */
+  --backdrop-blur-xs: blur(4px) saturate(180%);
+  --backdrop-blur-sm: blur(8px) saturate(180%);
+  --backdrop-blur-md: blur(12px) saturate(180%);
+  --backdrop-blur-lg: blur(16px) saturate(180%);
+  --backdrop-blur-xl: blur(24px) saturate(180%);
+
+  /* 3D Transform utilities */
+  --transform-perspective: 1000px;
+  --transform-rotate-x: rotateX(15deg);
+  --transform-rotate-y: rotateY(15deg);
+  --transform-scale-hover: scale(1.05);
+  --transform-scale-active: scale(0.98);
+
+  /* Apple-style gradients */
+  --gradient-glass: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.25),
+    rgba(255, 255, 255, 0.05)
+  );
+  --gradient-glass-dark: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.02)
+  );
+  --gradient-overlay: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+
+  /* Software House specific gradients */
+  --gradient-ai-accent: linear-gradient(
+    45deg,
+    rgba(107, 75, 255, 0.1) 0%,
+    rgba(255, 75, 85, 0.1) 100%
+  );
+  --gradient-tech-bg: linear-gradient(
+    135deg,
+    rgba(12, 22, 64, 0.02) 0%,
+    rgba(26, 36, 86, 0.05) 100%
+  );
+  --gradient-innovation-text: linear-gradient(
+    90deg,
+    #6b4bff 0%,
+    #ff4b55 50%,
+    #6b4bff 100%
+  );
+  --gradient-cta-hover: linear-gradient(
+    135deg,
+    rgba(255, 107, 107, 0.9) 0%,
+    rgba(255, 75, 85, 0.9) 100%
+  );
+}
+
+/* Software House Theme Variables */
+:root {
+  /* Layout específico para software house */
+  --header-height: 80px;
+  --hero-min-height: 100vh;
+  --section-padding: 120px;
+  --section-padding-mobile: 80px;
+  --container-max-width: 1400px;
+  --content-max-width: 1200px;
+
+  /* Grid system para serviços */
+  --services-grid-gap: 2rem;
+  --services-card-min-height: 320px;
+  --portfolio-grid-gap: 1.5rem;
+  --portfolio-card-aspect: 4/3;
+
+  /* Chat widget específico */
+  --chat-widget-width: 380px;
+  --chat-widget-height: 500px;
+  --chat-widget-bottom: 24px;
+  --chat-widget-right: 24px;
+  --chat-bubble-size: 60px;
+
+  /* Animação específica para IA */
+  --ai-pulse-duration: 2s;
+  --ai-glow-intensity: 0.6;
+  --tech-float-distance: 15px;
+  --innovation-scale: 1.05;
+
+  /* Tipografia específica para software house */
+  --hero-title-size: clamp(3rem, 8vw, 6rem);
+  --hero-subtitle-size: clamp(1.25rem, 3vw, 1.5rem);
+  --service-title-size: clamp(1.5rem, 4vw, 2rem);
+  --service-description-size: 1.1rem;
+
+  /* Cores específicas para categorias de serviço */
+  --software-accent: #6b4bff;
+  --agent-accent: #ff4b55;
+  --automation-accent: #34d399;
+
+  /* Estados interativos específicos */
+  --hover-lift-distance: -8px;
+  --hover-scale-factor: 1.02;
+  --active-scale-factor: 0.98;
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 2px;
+}
+
+/* Dark mode support (future) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Ajustes para modo escuro se necessário */
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0ms;
+    --transition-base: 0ms;
+    --transition-slow: 0ms;
+    --transition-slower: 0ms;
+  }
+}

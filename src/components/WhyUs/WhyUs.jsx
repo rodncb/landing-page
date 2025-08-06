@@ -1,19 +1,15 @@
 import "./WhyUs.css";
-import logo from "../../images/Logo.png";
 
 const WhyUs = () => {
   return (
-    <section className="why-us">
+    <section id="portfolio" className="why-us">
       <div className="why-us-container">
         <div className="why-us-header">
           <div className="why-us-title">
             <h2>
-              Porque utilizar a<br />
-              FacilitaAI ?
+              Por que escolher a<br />
+              <span className="highlight-text">FacilitaAI</span> ?
             </h2>
-          </div>
-          <div className="why-us-logo">
-            <img src={logo} alt="FacilitaAI Logo" className="logo-image" />
           </div>
         </div>
 
@@ -22,13 +18,13 @@ const WhyUs = () => {
             <div className="feature-number">01</div>
             <div className="feature-content">
               <h3>
-                Interação simples
-                <br />e intuitiva
+                Expertise em IA
+                <br />e Inovação
               </h3>
               <p>
-                Dê ações e receba feedback do seu agente virtual diretamente no
-                seu app de mensagens. Economize tempo e mantenha o controle de
-                tudo em um só lugar.
+                Nossa equipe especializada combina anos de experiência em
+                desenvolvimento com as mais avançadas tecnologias de IA,
+                entregando soluções que realmente transformam negócios.
               </p>
             </div>
           </div>
@@ -37,14 +33,14 @@ const WhyUs = () => {
             <div className="feature-number">02</div>
             <div className="feature-content">
               <h3>
-                Integrações
+                Soluções Sob
                 <br />
-                poderosas
+                Medida
               </h3>
               <p>
-                Conecte-se mídias sociais, emails, calendários, mecanismos de
-                pesquisa e muito mais para automatizar desde a prospecção até o
-                agendamento de reuniões.
+                Cada projeto é único. Desenvolvemos software personalizado que
+                se adapta perfeitamente às necessidades específicas do seu
+                negócio, garantindo máxima eficiência e ROI.
               </p>
             </div>
           </div>
@@ -53,14 +49,29 @@ const WhyUs = () => {
             <div className="feature-number">03</div>
             <div className="feature-content">
               <h3>
-                Evolução
-                <br />
-                Contínua
+                Suporte Completo
+                <br />e Contínuo
               </h3>
               <p>
-                Seu agente virtual aprende com você, faz perguntas relevantes e
-                propõe melhorias constantes. Assim, sua autoridade online cresce
-                de forma estratégica e sustentável.
+                Não apenas desenvolvemos, mas acompanhamos toda a jornada.
+                Oferecemos suporte técnico especializado, atualizações
+                constantes e evolução contínua das suas soluções.
+              </p>
+            </div>
+          </div>
+
+          <div className="feature-card">
+            <div className="feature-number">04</div>
+            <div className="feature-content">
+              <h3>
+                Resultados
+                <br />
+                Mensuráveis
+              </h3>
+              <p>
+                Focamos em entregar valor real. Todas as nossas soluções são
+                projetadas para gerar resultados concretos e mensuráveis, com
+                métricas claras de sucesso e impacto no seu negócio.
               </p>
             </div>
           </div>

@@ -3,7 +3,7 @@ import featureImage from "../../images/ImgsLPFacilitaAiImg3.png";
 
 const Features = () => {
   return (
-    <section className="features">
+    <section id="servicos" className="features">
       <div className="features-container">
         <div className="features-content">
           <h2>
