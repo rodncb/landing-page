@@ -25,8 +25,12 @@ function HomePage() {
 }
 
 function App() {
+  // Use basename apenas em desenvolvimento (localhost)
+  // Em produção (facilitaai.com.br) usa raiz "/"
+  const basename = import.meta.env.DEV ? "/landing-page" : "/";
+
   return (
-    <Router basename="/landing-page">
+    <Router basename={basename}>
       <div className="app">
         <Routes>
           <Route path="/" element={<HomePage />} />
