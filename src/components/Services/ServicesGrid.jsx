@@ -1,51 +1,52 @@
 import "./ServicesGrid.css";
+import { Link } from "react-router-dom";
 
 const ServicesGrid = () => {
   const services = [
     {
       id: 1,
-      title: "Software & Apps",
+      title: "LIA - Assistente WhatsApp",
       description:
-        "Aplicações e sistemas modernos potencializados por inteligência artificial para acelerar seu negócio digital.",
-      icon: "🚀",
+        "Assistente inteligente no WhatsApp que atende leads 24/7, qualifica automaticamente e nunca perde uma venda.",
+      icon: "🤖",
       features: [
-        "Desenvolvimento Full-Stack",
-        "IA Integrada Nativa",
-        "Interface Moderna",
-        "Arquitetura Escalável",
+        "Transcrição de Áudios",
+        "Conversação Natural",
+        "Qualificação de Leads",
+        "Integração com CRM",
       ],
       color: "blue",
-      category: "software",
+      category: "lia",
     },
     {
       id: 2,
-      title: "Agentes Inteligentes",
+      title: "CRM - Gestão de Vendas",
       description:
-        "Assistentes virtuais e chatbots personalizados que automatizam atendimento e processos complexos.",
-      icon: "🤖",
+        "Sistema completo de gestão de relacionamento com clientes para organizar e impulsionar suas vendas.",
+      icon: "📊",
       features: [
-        "IA Conversacional",
-        "Integração API",
-        "Aprendizado Contínuo",
-        "Atendimento 24/7",
+        "Pipeline Visual",
+        "Gestão de Leads",
+        "Propostas e Contratos",
+        "Análise de Resultados",
       ],
       color: "red",
-      category: "agent",
+      category: "crm",
     },
     {
       id: 3,
-      title: "Automações IA",
+      title: "Softwares Personalizados",
       description:
-        "Processos automatizados com inteligência artificial que eliminam tarefas repetitivas e aumentam produtividade.",
-      icon: "⚡",
+        "Desenvolvimento de software sob medida com inteligência artificial para resolver os desafios específicos do seu negócio.",
+      icon: "💻",
       features: [
-        "Fluxos Inteligentes",
-        "Integração Sistemas",
-        "Monitoramento 24/7",
-        "ROI Mensurável",
+        "Desenvolvimento Full-Stack",
+        "IA Integrada",
+        "Arquitetura Escalável",
+        "Suporte Técnico",
       ],
       color: "green",
-      category: "automation",
+      category: "software",
     },
   ];
 
@@ -94,10 +95,10 @@ const ServicesGrid = () => {
                 </div>
 
                 <div className="service-cta">
-                  <button className="service-button">
+                  <Link to="/waitlist" className="service-button">
                     Saiba Mais
                     <span className="button-arrow">→</span>
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

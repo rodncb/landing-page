@@ -1,0 +1,366 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+.waitlist-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0c1640 0%, #1a2456 50%, #0c1640 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.waitlist-page::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(128, 79, 255, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float 20s ease-in-out infinite;
+}
+
+.waitlist-page::after {
+  content: "";
+  position: absolute;
+  bottom: -20%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 107, 107, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float 25s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-30px, -30px);
+  }
+}
+
+.back-link {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  text-decoration: none;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.back-link:hover {
+  color: #ff6b6b;
+  transform: translateX(-5px);
+}
+
+.waitlist-container {
+  background: white;
+  border-radius: 24px;
+  padding: 3rem;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.waitlist-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.waitlist-logo {
+  width: 80px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.waitlist-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #ff6b6b, #804fff);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+}
+
+.waitlist-header h1 {
+  font-family: "Inter", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0c1640;
+  margin: 0 0 1rem 0;
+}
+
+.waitlist-header p {
+  font-family: "Inter", sans-serif;
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.waitlist-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: #f8f8ff;
+  border-radius: 16px;
+}
+
+.benefit {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: "Inter", sans-serif;
+  color: #333;
+  font-weight: 500;
+}
+
+.benefit svg {
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+.waitlist-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.875rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #804fff;
+  box-shadow: 0 0 0 3px rgba(128, 79, 255, 0.1);
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: "Inter", sans-serif;
+  color: #333;
+  cursor: pointer;
+  padding: 0.75rem;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.checkbox-label:hover {
+  background: #f8f8ff;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #804fff;
+}
+
+.waitlist-submit {
+  width: 100%;
+  background: linear-gradient(90deg, #ff6b6b, #804fff);
+  color: white;
+  border: none;
+  padding: 1.2rem;
+  border-radius: 50px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(128, 79, 255, 0.3);
+  margin-top: 1rem;
+}
+
+.waitlist-submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(128, 79, 255, 0.4);
+}
+
+.waitlist-count {
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  color: #666;
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.waitlist-count strong {
+  color: #ff6b6b;
+  font-weight: 700;
+}
+
+/* Success State */
+.waitlist-success {
+  background: white;
+  border-radius: 24px;
+  padding: 4rem 3rem;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.success-icon {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+  color: white;
+  animation: successPop 0.5s ease-out;
+}
+
+@keyframes successPop {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.waitlist-success h1 {
+  font-family: "Inter", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0c1640;
+  margin: 0 0 1rem 0;
+}
+
+.waitlist-success p {
+  font-family: "Inter", sans-serif;
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.success-note {
+  font-size: 1rem !important;
+  color: #804fff !important;
+  font-weight: 600 !important;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #0c1640;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.back-button:hover {
+  background: #1a2456;
+  transform: translateY(-2px);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .waitlist-page {
+    padding: 1rem;
+  }
+
+  .back-link {
+    top: 1rem;
+    left: 1rem;
+  }
+
+  .waitlist-container,
+  .waitlist-success {
+    padding: 2rem 1.5rem;
+  }
+
+  .waitlist-header h1 {
+    font-size: 2rem;
+  }
+
+  .waitlist-header p {
+    font-size: 1rem;
+  }
+
+  .waitlist-success h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .waitlist-container,
+  .waitlist-success {
+    padding: 2rem 1rem;
+  }
+
+  .waitlist-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .waitlist-logo {
+    width: 60px;
+  }
+
+  .success-icon {
+    width: 80px;
+    height: 80px;
+  }
+}

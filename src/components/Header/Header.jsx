@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import "./Header.css";
 import logo from "../../images/Logo.png";
-import { ContactFormModal } from "../features/ContactForm";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Handle scroll effect
   useEffect(() => {
@@ -70,10 +69,10 @@ const Header = () => {
             </li>
             <li className="nav-item">
               <button
-                onClick={() => scrollToSection("sobre")}
+                onClick={() => scrollToSection("lia-section")}
                 className="nav-link"
               >
-                Sobre
+                LIA
               </button>
             </li>
             <li className="nav-item">
@@ -81,7 +80,7 @@ const Header = () => {
                 onClick={() => scrollToSection("portfolio")}
                 className="nav-link"
               >
-                Cases
+                Por que nós
               </button>
             </li>
             <li className="nav-item">
@@ -97,9 +96,9 @@ const Header = () => {
 
         {/* CTA Button */}
         <div className="header-cta">
-          <button onClick={() => setIsModalOpen(true)} className="cta-button">
+          <Link to="/waitlist" className="cta-button">
             Iniciar Projeto
-          </button>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -132,11 +131,11 @@ const Header = () => {
             </li>
             <li className="mobile-nav-item">
               <button
-                onClick={() => scrollToSection("sobre")}
+                onClick={() => scrollToSection("lia-section")}
                 className="mobile-nav-link"
               >
-                <span className="mobile-nav-icon">👥</span>
-                Sobre
+                <span className="mobile-nav-icon">🤖</span>
+                LIA
               </button>
             </li>
             <li className="mobile-nav-item">
@@ -145,7 +144,7 @@ const Header = () => {
                 className="mobile-nav-link"
               >
                 <span className="mobile-nav-icon">💼</span>
-                Cases
+                Por que nós
               </button>
             </li>
             <li className="mobile-nav-item">
@@ -160,16 +159,14 @@ const Header = () => {
           </ul>
 
           <div className="mobile-nav-cta">
-            <button
-              onClick={() => {
-                setIsModalOpen(true);
-                setIsMenuOpen(false);
-              }}
+            <Link
+              to="/waitlist"
+              onClick={() => setIsMenuOpen(false)}
               className="mobile-cta-button"
             >
               <span className="mobile-nav-icon">💬</span>
               Iniciar Projeto
-            </button>
+            </Link>
           </div>
         </div>
       </nav>
@@ -182,12 +179,6 @@ const Header = () => {
           aria-hidden="true"
         />
       )}
-
-      {/* Contact Form Modal */}
-      <ContactFormModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
     </header>
   );
 };

@@ -1,19 +1,10 @@
-import { useState } from "react";
 import "./Hero.css";
+import { Link } from "react-router-dom";
 import Button from "../common/Button";
-import { ContactFormModal } from "../features/ContactForm";
 
 const Hero = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const whatsappNumber = "5524981058194";
-  const message = "Olá! Gostaria de conhecer as soluções da Facilita.AI";
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-    message
-  )}`;
-
   return (
-    <>
-      <section id="hero" className="hero">
+    <section id="hero" className="hero">
         {/* Video Background - Placeholder for now */}
         <div className="hero-video-container">
           <div className="hero-video-placeholder">
@@ -115,7 +106,7 @@ const Hero = () => {
             <div className="hero-main">
               <h1 className="hero-title">
                 Desenvolvemos softwares <br />
-                inteligentes que facilita <br />
+                inteligentes que facilitam <br />
                 o crescimento da <br />
                 <span className="highlight-text">sua empresa</span>
               </h1>
@@ -142,26 +133,20 @@ const Hero = () => {
               </div>
 
               <div className="hero-cta">
-                <Button
-                  onClick={() => setIsModalOpen(true)}
-                  variant="primary"
-                  size="lg"
-                  className="cta-primary"
-                >
-                  Começar Meu Projeto
-                </Button>
+                <Link to="/waitlist">
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    className="cta-primary"
+                  >
+                    Começar Meu Projeto
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Contact Form Modal */}
-      <ContactFormModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
-    </>
   );
 };
 

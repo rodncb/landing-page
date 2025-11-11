@@ -1,0 +1,279 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+.lia-section {
+  background: linear-gradient(180deg, #f8f8ff 0%, #ffffff 100%);
+  padding: 6rem 0;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.lia-section::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(128, 79, 255, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float 20s ease-in-out infinite;
+}
+
+.lia-section::after {
+  content: "";
+  position: absolute;
+  bottom: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 107, 107, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float 25s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-20px, -20px);
+  }
+}
+
+.lia-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.lia-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.lia-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #ff6b6b, #804fff);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 15px rgba(128, 79, 255, 0.3);
+}
+
+.badge-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.lia-title {
+  font-family: "Inter", sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #0c1640;
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
+}
+
+.lia-subtitle {
+  font-family: "Inter", sans-serif;
+  font-size: 1.25rem;
+  color: #555;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.lia-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.lia-feature-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 1px solid rgba(128, 79, 255, 0.1);
+}
+
+.lia-feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(128, 79, 255, 0.15);
+  border-color: rgba(128, 79, 255, 0.3);
+}
+
+.feature-icon-wrapper {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #ff6b6b, #804fff);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.feature-icon {
+  width: 28px;
+  height: 28px;
+  color: white;
+  stroke-width: 2.5;
+}
+
+.feature-content h3 {
+  font-family: "Inter", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #0c1640;
+  margin: 0 0 0.5rem 0;
+}
+
+.feature-content p {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.lia-cta {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.lia-button {
+  display: inline-block;
+  background: linear-gradient(90deg, #ff6b6b, #804fff);
+  color: white;
+  padding: 1.2rem 3rem;
+  border-radius: 50px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(128, 79, 255, 0.3);
+  border: none;
+  cursor: pointer;
+}
+
+.lia-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(128, 79, 255, 0.4);
+}
+
+.lia-note {
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 1rem;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .lia-title {
+    font-size: 2.5rem;
+  }
+
+  .lia-features {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .lia-section {
+    padding: 4rem 0;
+  }
+
+  .lia-container {
+    padding: 0 1.5rem;
+  }
+
+  .lia-title {
+    font-size: 2rem;
+  }
+
+  .lia-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .lia-features {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .lia-button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .lia-section {
+    padding: 3rem 0;
+  }
+
+  .lia-title {
+    font-size: 1.75rem;
+  }
+
+  .lia-subtitle {
+    font-size: 1rem;
+  }
+
+  .lia-feature-card {
+    padding: 1.5rem;
+  }
+
+  .feature-icon-wrapper {
+    width: 48px;
+    height: 48px;
+  }
+
+  .feature-icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Telas grandes (1920px+) */
+@media (min-width: 1920px) {
+  .lia-container {
+    max-width: 1400px;
+  }
+
+  .lia-title {
+    font-size: 3.5rem;
+  }
+
+  .lia-subtitle {
+    font-size: 1.4rem;
+  }
+}
+
+/* 4K (2560px+) */
+@media (min-width: 2560px) {
+  .lia-container {
+    max-width: 1600px;
+  }
+
+  .lia-title {
+    font-size: 4rem;
+  }
+}

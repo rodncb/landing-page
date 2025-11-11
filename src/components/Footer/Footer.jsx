@@ -1,5 +1,6 @@
 import "./Footer.css";
 import logo from "../../images/Logo.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const whatsappNumber = "5524981058194";
@@ -54,16 +55,16 @@ const Footer = () => {
           <h4>Serviços</h4>
           <ul>
             <li>
-              <a href="#servicos">Software & Apps</a>
+              <a href="#servicos">LIA - WhatsApp com IA</a>
             </li>
             <li>
-              <a href="#servicos">Agentes Inteligentes</a>
+              <a href="#servicos">CRM</a>
             </li>
             <li>
-              <a href="#servicos">Automações IA</a>
+              <a href="#servicos">Softwares Personalizados</a>
             </li>
             <li>
-              <a href="#servicos">Consultoria Tech</a>
+              <Link to="/waitlist">Entrar na Lista</Link>
             </li>
           </ul>
         </div>
@@ -73,35 +74,29 @@ const Footer = () => {
           <h4>Empresa</h4>
           <ul>
             <li>
-              <a href="#sobre">Sobre Nós</a>
+              <a href="#lia-section">Sobre LIA</a>
             </li>
             <li>
-              <a href="#portfolio">Portfólio</a>
+              <a href="#portfolio">Por que nós</a>
             </li>
             <li>
-              <a href="#blog">Blog</a>
-            </li>
-            <li>
-              <a href="#carreiras">Carreiras</a>
+              <Link to="/waitlist">Entrar em contato</Link>
             </li>
           </ul>
         </div>
 
         {/* Support */}
         <div className="footer-column">
-          <h4>Suporte</h4>
+          <h4>Recursos</h4>
           <ul>
             <li>
               <a href="#contato">Contato</a>
             </li>
             <li>
-              <a href="#docs">Documentação</a>
+              <Link to="/waitlist">Agendar Demonstração</Link>
             </li>
             <li>
-              <a href="#faq">FAQ</a>
-            </li>
-            <li>
-              <a href="#comunidade">Comunidade</a>
+              <a href="#servicos">Ver Serviços</a>
             </li>
           </ul>
         </div>
