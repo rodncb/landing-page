@@ -65,9 +65,9 @@ const Chat = () => {
       source: "chat", // Identificar que veio do chat
     };
 
-    // Salvar na mesma planilha do waitlist (Google Sheets)
+    // Salvar na planilha específica do chat (Google Sheets)
     const GOOGLE_SHEETS_WEBHOOK =
-      "https://script.google.com/macros/s/AKfycbwVPgolYoIHR330l7RDU3KX0kySgNXzQWcbGRgEYH4fz3KzdNnBAkBZ-Gq0V093rwTxyw/exec";
+      "https://script.google.com/macros/s/AKfycbwb2wN1KxI2MOAXU2Sk3AFs0XbreSeFUlnAslfoERSsz_9fgWA-RurAB_VWUObMxnV3Fw/exec";
 
     try {
       await fetch(GOOGLE_SHEETS_WEBHOOK, {

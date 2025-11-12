@@ -404,7 +404,7 @@
   }
 
   .logo-text {
-    display: none;
+    font-size: 14px !important;
   }
 }
 
