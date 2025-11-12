@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/landing-page/", // Alterado para corresponder ao nome do repositório
+  base: "/",
   server: {
     port: 3030,
   },

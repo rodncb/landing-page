@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Chat.css";
+import { CHAT_API_URL, API_KEY, IS_DEVELOPMENT } from "../../config/api";
 
 const Chat = () => {
   // Estado para controlar visibilidade e mensagens do chat
@@ -24,11 +25,8 @@ const Chat = () => {
   // Gerar ID único para esta conversa
   const [conversationId, setConversationId] = useState("");
 
-  // Detectar ambiente
-  const isDevelopment =
-    typeof window !== "undefined" &&
-    (window.location.hostname === "localhost" ||
-      window.location.hostname === "127.0.0.1");
+  // Usar detecção de ambiente do config
+  const isDevelopment = IS_DEVELOPMENT;
 
   // Validar formulário de leads quando os campos mudam
   useEffect(() => {
@@ -57,20 +55,46 @@ const Chat = () => {
   }, [messages, isChatOpen]);
 
   // Função para salvar os dados do lead
-  const saveLead = () => {
+  const saveLead = async () => {
     const leadData = {
       name: leadName,
       email: leadEmail,
       phone: leadPhone,
       timestamp: new Date().toISOString(),
       conversationId: conversationId,
+      source: "chat", // Identificar que veio do chat
     };
+
+    // Salvar na mesma planilha do waitlist (Google Sheets)
+    const GOOGLE_SHEETS_WEBHOOK =
+      "https://script.google.com/macros/s/AKfycbwVPgolYoIHR330l7RDU3KX0kySgNXzQWcbGRgEYH4fz3KzdNnBAkBZ-Gq0V093rwTxyw/exec";
+
+    try {
+      await fetch(GOOGLE_SHEETS_WEBHOOK, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: leadName,
+          email: leadEmail,
+          phone: leadPhone,
+          source: "Chat Landing Page",
+          timestamp: new Date().toISOString(),
+        }),
+      });
+
+      console.log("Lead salvo com sucesso na planilha!");
+    } catch (error) {
+      console.error("Erro ao salvar lead:", error);
+    }
 
     setShowLeadForm(false);
 
     const welcomeMessage = {
       id: `bot_${Date.now()}`,
-      text: `Obrigado, ${leadName}! Seus dados foram recebidos com sucesso. Em breve entraremos em contato através do e-mail fornecido.\n\nComo posso ajudar você hoje?`,
+      text: `Obrigado, ${leadName}! Seus dados foram recebidos com sucesso. Sou a LIA, assistente virtual da Facilita.AI.\n\nComo posso ajudar você hoje?`,
       sender: "bot",
       timestamp: new Date().toISOString(),
     };
@@ -92,11 +116,10 @@ const Chat = () => {
     try {
       setIsTyping(true);
 
-      // Verificar se estamos em modo de desenvolvimento ou se devemos usar respostas simuladas
-      if (isDevelopment) {
-        try {
-          // URL do servidor LM Studio
-          const apiUrl = "http://127.0.0.1:8080/v1/chat/completions";
+      // Usar API configurada (LM Studio em dev, VPS em produção)
+      try {
+        // URL da API (vem do config)
+        const apiUrl = CHAT_API_URL;
 
           // Formatar a data e hora atual para informar ao modelo
           const formattedDateTime = currentDateTime.toLocaleString("pt-BR", {
@@ -134,12 +157,19 @@ REGRAS IMPORTANTES:
             max_tokens: 150, // Reduzido para forçar respostas mais curtas
           };
 
+          // Preparar headers (adicionar API Key em produção)
+          const headers = {
+            "Content-Type": "application/json",
+          };
+
+          if (API_KEY) {
+            headers["X-API-Key"] = API_KEY;
+          }
+
           // Fazer a chamada à API
           const response = await fetch(apiUrl, {
             method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
+            headers: headers,
             body: JSON.stringify(payload),
           });
 
@@ -180,74 +210,26 @@ REGRAS IMPORTANTES:
           setIsTyping(false);
           return true;
         } catch (error) {
-          console.error("Erro ao conectar com LM Studio:", error);
-          // Se falhar, cai no modo de respostas simuladas abaixo
+          console.error("Erro ao conectar com a API:", error);
+
+          // Fallback: usar respostas simuladas
+          setTimeout(() => {
+            const fallbackMessage = {
+              id: `resp_${Date.now()}`,
+              text: "Desculpe, estou com dificuldades técnicas no momento. Nossa equipe já foi notificada. Por favor, tente novamente em alguns minutos ou entre em contato via WhatsApp.",
+              sender: "bot",
+              timestamp: new Date().toISOString(),
+            };
+            setMessages((prev) => [...prev, fallbackMessage]);
+            setIsTyping(false);
+          }, 1500);
+          return false;
         }
-      }
-
-      // Código existente para respostas simuladas (como fallback)
-      const simulateResponse = (message) => {
-        const defaultResponses = {
-          default:
-            "Obrigado pelo seu contato! Sou o assistente virtual da Facilita.AI. Como posso ajudar com sua expansão digital hoje?",
-          ajuda:
-            "Estou aqui para ajudar! A Facilita.AI oferece soluções para expandir sua presença digital de forma simples e eficiente. Como posso orientá-lo hoje?",
-          preço:
-            "Nossos planos são personalizados de acordo com as necessidades do seu negócio. Podemos agendar uma consulta para discutir detalhes e valores. Gostaria de agendar?",
-          serviço:
-            "A Facilita.AI integra fluxos de trabalho automatizados e tecnologia de Inteligência Artificial para ajudar você a se posicionar como referência no seu mercado, mesmo sem experiência em marketing.",
-          funcionamento:
-            "Nossa plataforma integra fluxos de trabalho automatizados e tecnologia de IA para simplificar sua expansão digital. Ajudamos a automatizar conteúdo, gerenciar redes sociais e construir sua presença online.",
-        };
-
-        const messageLower = message.toLowerCase();
-
-        if (
-          messageLower.includes("preço") ||
-          messageLower.includes("valor") ||
-          messageLower.includes("custo")
-        ) {
-          return defaultResponses.preço;
-        } else if (
-          messageLower.includes("ajuda") ||
-          messageLower.includes("suporte")
-        ) {
-          return defaultResponses.ajuda;
-        } else if (
-          messageLower.includes("serviço") ||
-          messageLower.includes("oferecem")
-        ) {
-          return defaultResponses.serviço;
-        } else if (
-          messageLower.includes("como funciona") ||
-          messageLower.includes("funciona")
-        ) {
-          return defaultResponses.funcionamento;
-        }
-
-        return defaultResponses.default;
-      };
-
-      setTimeout(() => {
-        const responseText = simulateResponse(message);
-
-        const botMessage = {
-          id: `resp_${Date.now()}`,
-          text: responseText,
-          sender: "bot",
-          timestamp: new Date().toISOString(),
-        };
-
-        setMessages((prev) => [...prev, botMessage]);
+      } catch (outerError) {
+        console.error("Erro geral:", outerError);
         setIsTyping(false);
-      }, 1500);
-
-      return true;
-    } catch (error) {
-      console.error("Erro ao processar mensagem:", error);
-      setIsTyping(false);
-      return false;
-    }
+        return false;
+      }
   };
 
   // Enviar mensagem quando o usuário clica no botão ou pressiona Enter
