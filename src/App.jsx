@@ -8,7 +8,7 @@ import Security from "./components/Security/Security";
 import WhyUs from "./components/WhyUs/WhyUs";
 import Footer from "./components/Footer/Footer";
 import Waitlist from "./pages/Waitlist/Waitlist";
-// Chat removido temporariamente - será substituído por chat com OpenAI
+import Chat from "./components/Chat/Chat";
 
 function HomePage() {
   return (
@@ -20,6 +20,7 @@ function HomePage() {
       <Security />
       <WhyUs />
       <Footer />
+      <Chat />
     </>
   );
 }
