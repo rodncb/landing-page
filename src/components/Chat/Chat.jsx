@@ -535,16 +535,22 @@ ${shouldClose ? "- IMPORTANTE: Esta é a última mensagem. Finalize educadamente
                   />
                 </div>
 
-                <div className="form-group" style={{ marginTop: "16px", marginBottom: "16px" }}>
+                <div className="form-group" style={{
+                  marginTop: "16px",
+                  marginBottom: "16px",
+                  padding: "12px",
+                  backgroundColor: "rgba(255, 255, 255, 0.1)",
+                  borderRadius: "8px"
+                }}>
                   <label
                     style={{
                       display: "flex",
                       alignItems: "flex-start",
                       gap: "10px",
-                      fontSize: "12px",
-                      lineHeight: "1.5",
+                      fontSize: "13px",
+                      lineHeight: "1.6",
                       cursor: "pointer",
-                      color: "rgba(255, 255, 255, 0.9)"
+                      margin: 0
                     }}
                   >
                     <input
@@ -552,17 +558,18 @@ ${shouldClose ? "- IMPORTANTE: Esta é a última mensagem. Finalize educadamente
                       checked={acceptedPrivacy}
                       onChange={(e) => setAcceptedPrivacy(e.target.checked)}
                       style={{
-                        marginTop: "4px",
+                        marginTop: "3px",
                         cursor: "pointer",
                         flexShrink: 0,
-                        width: "16px",
-                        height: "16px",
-                        accentColor: "#ff4b55",
-                        border: "2px solid rgba(255, 255, 255, 0.3)",
-                        borderRadius: "3px"
+                        width: "18px",
+                        height: "18px",
+                        accentColor: "#ff4b55"
                       }}
                     />
-                    <span>
+                    <span style={{
+                      color: "#ffffff",
+                      fontWeight: "400"
+                    }}>
                       Ao preencher este formulário, autorizo a Facilita.AI a coletar e armazenar meus dados para fins de atendimento comercial, conforme a Lei Geral de Proteção de Dados (LGPD).
                     </span>
                   </label>
