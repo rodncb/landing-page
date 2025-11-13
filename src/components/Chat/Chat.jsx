@@ -535,15 +535,16 @@ ${shouldClose ? "- IMPORTANTE: Esta é a última mensagem. Finalize educadamente
                   />
                 </div>
 
-                <div className="form-group" style={{ marginTop: "16px" }}>
+                <div className="form-group" style={{ marginTop: "16px", marginBottom: "16px" }}>
                   <label
                     style={{
                       display: "flex",
                       alignItems: "flex-start",
-                      gap: "8px",
-                      fontSize: "13px",
-                      lineHeight: "1.4",
-                      cursor: "pointer"
+                      gap: "10px",
+                      fontSize: "12px",
+                      lineHeight: "1.5",
+                      cursor: "pointer",
+                      color: "rgba(255, 255, 255, 0.9)"
                     }}
                   >
                     <input
@@ -551,12 +552,14 @@ ${shouldClose ? "- IMPORTANTE: Esta é a última mensagem. Finalize educadamente
                       checked={acceptedPrivacy}
                       onChange={(e) => setAcceptedPrivacy(e.target.checked)}
                       style={{
-                        marginTop: "2px",
+                        marginTop: "4px",
                         cursor: "pointer",
-                        flexShrink: 0
+                        flexShrink: 0,
+                        width: "16px",
+                        height: "16px"
                       }}
                     />
-                    <span style={{ color: "rgba(255, 255, 255, 0.85)" }}>
+                    <span>
                       Ao preencher este formulário, autorizo a Facilita.AI a coletar e armazenar meus dados para fins de atendimento comercial, conforme a Lei Geral de Proteção de Dados (LGPD).
                     </span>
                   </label>
