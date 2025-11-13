@@ -33,13 +33,10 @@ export const OPENAI_CONFIG = {
 };
 
 // Exportar configuração baseada no ambiente
-export const CHAT_API_URL = isDevelopment
-  ? API_CONFIG.development.chatApiUrl
-  : API_CONFIG.production.chatApiUrl;
+// Temporariamente usando produção em dev para testes (LM Studio não está rodando)
+export const CHAT_API_URL = API_CONFIG.production.chatApiUrl;
 
-export const API_KEY = isDevelopment
-  ? API_CONFIG.development.apiKey
-  : API_CONFIG.production.apiKey;
+export const API_KEY = API_CONFIG.production.apiKey;
 
 export const IS_DEVELOPMENT = isDevelopment;
 

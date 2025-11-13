@@ -112,7 +112,7 @@ const Chat = () => {
   // Função para salvar histórico completo da conversa
   const saveConversationHistory = async () => {
     const GOOGLE_SHEETS_WEBHOOK =
-      "https://script.google.com/macros/s/AKfycbwb2wN1KxI2MOAXU2Sk3AFs0XbreSeFUlnAslfoERSsz_9fgWA-RurAB_VWUObMxnV3Fw/exec";
+      "https://script.google.com/macros/s/AKfycbyCjIL5OatrLAA3yBxk_eTuVd-xeGIhVt3RKVTlLpnP/dev";
 
     // Formatar histórico como texto
     const conversationText = messages
@@ -125,6 +125,12 @@ const Chat = () => {
         return `[${time}] ${sender}: ${msg.text}`;
       })
       .join("\n");
+
+    console.log("📝 Salvando histórico da conversa...", {
+      leadName,
+      messageCount: messages.length,
+      conversationPreview: conversationText.substring(0, 100)
+    });
 
     try {
       await fetch(GOOGLE_SHEETS_WEBHOOK, {
@@ -140,13 +146,13 @@ const Chat = () => {
           source: "Chat Landing Page - Histórico Completo",
           timestamp: new Date().toISOString(),
           conversation: conversationText,
-          messageCount: userMessageCount + 1,
+          messageCount: messages.length,
         }),
       });
 
-      console.log("Histórico da conversa salvo com sucesso!");
+      console.log("✅ Histórico da conversa salvo com sucesso!");
     } catch (error) {
-      console.error("Erro ao salvar histórico:", error);
+      console.error("❌ Erro ao salvar histórico:", error);
     }
   };
 
@@ -245,31 +251,20 @@ const Chat = () => {
       const shouldClose = userMessageCount >= 4; // 5ª mensagem (começa em 0)
 
       // System prompt com instruções de encerramento
-      const systemPrompt = `Você é a LIA (Líder em Inteligência Artificial), assistente virtual da Facilita.AI. Hoje é ${formattedDateTime}.
+      const systemPrompt = `Você é a LIA, assistente virtual da Facilita.AI. Data: ${formattedDateTime}.
 
-SOBRE A FACILITA.AI:
-- Software house especializada em soluções com IA
-- Desenvolvemos: Softwares personalizados, Agentes Inteligentes, Automações com IA
+FACILITA.AI: Software house de IA. Criamos apps/softwares personalizados, agentes inteligentes e automações.
 
-SOBRE VOCÊ (LIA):
-- Você é nosso principal produto: assistente de WhatsApp com IA
-- LIA atende leads 24/7, qualifica automaticamente e integra com CRM
-- Transcreve áudios, mantém contexto das conversas, personaliza respostas
+INSTRUÇÕES CRÍTICAS:
+1. Máximo 2-3 linhas - RESPONDA DIRETO
+2. LEIA O HISTÓRICO - nunca repita perguntas já respondidas pelo usuário
+3. Se usuário perguntar preço: "Nossos planos são personalizados. A equipe comercial vai entrar em contato para passar valores e condições."
+4. Se usuário já disse o que quer: NÃO pergunte novamente. Avance a conversa.
+5. Evite começar respostas com "Claro!" - seja mais variado
+6. Para apps: se já souber tipo de negócio, pergunte sobre funcionalidades específicas (agendamento? pagamentos? controle de estoque?)
+${shouldClose ? "7. ÚLTIMA MSG: Resuma a necessidade + 'Equipe Facilita.AI entra em contato em breve com proposta personalizada!'" : ""}
 
-NOSSOS SERVIÇOS:
-1. LIA - WhatsApp com IA (você!)
-2. Softwares & Apps personalizados
-3. Agentes Inteligentes para automação
-4. Integrações e CRMs
-
-COMO RESPONDER:
-- Seja concisa (máximo 4 linhas)
-- Fale na primeira pessoa quando mencionar a LIA ("Eu sou a LIA...")
-- Destaque que você atende 24/7 no WhatsApp
-- Para preços: diga que são personalizados, consultor entra em contato em breve
-${shouldClose ? "- IMPORTANTE: Esta é a última mensagem. Finalize educadamente resumindo o que o cliente precisa e informe que a equipe entrará em contato em breve. Use algo como 'Entendi que você precisa de [resumo]... Nossa equipe comercial da Facilita.AI entrará em contato em breve!'" : "- Na 4ª interação, comece a direcionar para conclusão naturalmente se já entendeu a necessidade"}
-- Tom: amigável, profissional, consultivo
-- NÃO use asteriscos (*) nem emojis`;
+Tom: direto, profissional. SEM asteriscos ou emojis.`;
 
       // Preparar payload base
       const messagesPayload = [
@@ -287,9 +282,9 @@ ${shouldClose ? "- IMPORTANTE: Esta é a última mensagem. Finalize educadamente
       let responseText = "";
 
       // Tentar API (VPS ou fallback configurado no backend)
-      // Timeout de 60s (contexto maior demora mais)
+      // Timeout de 90s (contexto maior + modelo pode demorar)
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 60000);
+      const timeoutId = setTimeout(() => controller.abort(), 90000);
 
       const headers = {
         "Content-Type": "application/json",
@@ -305,7 +300,8 @@ ${shouldClose ? "- IMPORTANTE: Esta é a última mensagem. Finalize educadamente
           model: "qwen2.5:3b",
           messages: messagesPayload,
           temperature: 0.7,
-          max_tokens: 250,
+          max_tokens: 200,
+          stream: false,
         }),
         signal: controller.signal,
       });
@@ -385,6 +381,13 @@ ${shouldClose ? "- IMPORTANTE: Esta é a última mensagem. Finalize educadamente
         };
         setMessages((prev) => [...prev, fallbackMessage]);
         setIsTyping(false);
+
+        // Salvar histórico mesmo com erro (após 2 mensagens)
+        if (userMessageCount >= 1) {
+          setTimeout(() => {
+            saveConversationHistory();
+          }, 500);
+        }
       }, 1500);
       return false;
     }

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Sparkles, Check, ArrowLeft } from 'lucide-react';
 import './Waitlist.css';
@@ -16,11 +16,17 @@ const Waitlist = () => {
 
   const [submitted, setSubmitted] = useState(false);
   const [waitlistCount, setWaitlistCount] = useState(0);
+  const formRef = useRef(null);
 
   useEffect(() => {
     // Carregar contador da waitlist
     const waitlist = JSON.parse(localStorage.getItem('waitlist') || '[]');
     setWaitlistCount(waitlist.length);
+
+    // Scroll para o início do formulário
+    if (formRef.current) {
+      formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }, []);
 
   const handleChange = (e) => {
@@ -105,7 +111,7 @@ const Waitlist = () => {
         Voltar
       </Link>
 
-      <div className="waitlist-container">
+      <div className="waitlist-container" ref={formRef}>
         <div className="waitlist-header">
           <img src={logo} alt="Facilita.AI" className="waitlist-logo" />
           <div className="waitlist-badge">
