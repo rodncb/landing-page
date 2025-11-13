@@ -286,8 +286,9 @@ ${shouldClose ? "- IMPORTANTE: Esta é a última mensagem. Finalize educadamente
       let responseText = "";
 
       // Tentar API (VPS ou fallback configurado no backend)
+      // Timeout de 60s (contexto maior demora mais)
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 30000);
+      const timeoutId = setTimeout(() => controller.abort(), 60000);
 
       const headers = {
         "Content-Type": "application/json",
@@ -357,13 +358,27 @@ ${shouldClose ? "- IMPORTANTE: Esta é a última mensagem. Finalize educadamente
 
       return true;
     } catch (error) {
-      console.error("Todas as APIs falharam:", error);
+      console.error("❌ Erro na API:", {
+        errorName: error.name,
+        errorMessage: error.message,
+        stack: error.stack,
+        isAbortError: error.name === 'AbortError',
+        messagesCount: messages.length,
+        userMessageCount: userMessageCount,
+      });
+
+      // Verificar se foi timeout
+      let errorMessage = "Desculpe, estou com dificuldades técnicas no momento. Nossa equipe da Facilita.AI já foi notificada e entrará em contato em breve.";
+
+      if (error.name === 'AbortError') {
+        errorMessage = "A resposta está demorando mais que o esperado. Nossa equipe da Facilita.AI já foi notificada e entrará em contato em breve para dar continuidade ao seu atendimento.";
+      }
 
       // Fallback final: mensagem de erro
       setTimeout(() => {
         const fallbackMessage = {
           id: `resp_${Date.now()}`,
-          text: "Desculpe, estou com dificuldades técnicas no momento. Nossa equipe já foi notificada. Por favor, tente novamente em alguns minutos ou entre em contato via WhatsApp.",
+          text: errorMessage,
           sender: "bot",
           timestamp: new Date().toISOString(),
         };
@@ -378,20 +393,22 @@ ${shouldClose ? "- IMPORTANTE: Esta é a última mensagem. Finalize educadamente
   const handleSendMessage = async () => {
     if (!newMessage.trim() || isConversationClosed) return;
 
+    const messageText = newMessage;
+    setNewMessage("");
+
     // Incrementar contador de mensagens do usuário
     setUserMessageCount((prev) => prev + 1);
 
     const userMessage = {
       id: `user_${Date.now()}`,
-      text: newMessage,
+      text: messageText,
       sender: "user",
       timestamp: new Date().toISOString(),
     };
 
     setMessages((prev) => [...prev, userMessage]);
-    setNewMessage("");
 
-    await sendMessage(userMessage.text);
+    await sendMessage(messageText);
   };
 
   // Lidar com tecla Enter
