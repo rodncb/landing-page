@@ -17,6 +17,7 @@ const Chat = () => {
   const [leadName, setLeadName] = useState("");
   const [leadEmail, setLeadEmail] = useState("");
   const [leadPhone, setLeadPhone] = useState("");
+  const [acceptedPrivacy, setAcceptedPrivacy] = useState(false);
   const [isLeadFormValid, setIsLeadFormValid] = useState(false);
 
   // Controle de encerramento e inatividade
@@ -40,8 +41,8 @@ const Chat = () => {
     const isNameValid = leadName.trim().length >= 3;
     const isPhoneValid = leadPhone.trim().length >= 10;
 
-    setIsLeadFormValid(isEmailValid && isNameValid && isPhoneValid);
-  }, [leadName, leadEmail, leadPhone]);
+    setIsLeadFormValid(isEmailValid && isNameValid && isPhoneValid && acceptedPrivacy);
+  }, [leadName, leadEmail, leadPhone, acceptedPrivacy]);
 
   // Gerar um ID único para a conversa
   useEffect(() => {
@@ -532,6 +533,33 @@ ${shouldClose ? "- IMPORTANTE: Esta é a última mensagem. Finalize educadamente
                     placeholder="Digite seu telefone"
                     required
                   />
+                </div>
+
+                <div className="form-group" style={{ marginTop: "16px" }}>
+                  <label
+                    style={{
+                      display: "flex",
+                      alignItems: "flex-start",
+                      gap: "8px",
+                      fontSize: "13px",
+                      lineHeight: "1.4",
+                      cursor: "pointer"
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={acceptedPrivacy}
+                      onChange={(e) => setAcceptedPrivacy(e.target.checked)}
+                      style={{
+                        marginTop: "2px",
+                        cursor: "pointer",
+                        flexShrink: 0
+                      }}
+                    />
+                    <span style={{ color: "rgba(255, 255, 255, 0.85)" }}>
+                      Ao preencher este formulário, autorizo a Facilita.AI a coletar e armazenar meus dados para fins de atendimento comercial, conforme a Lei Geral de Proteção de Dados (LGPD).
+                    </span>
+                  </label>
                 </div>
 
                 <button

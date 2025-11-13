@@ -10,7 +10,8 @@ const Waitlist = () => {
     email: '',
     phone: '',
     interests: [],
-    message: ''
+    message: '',
+    acceptedPrivacy: false
   });
 
   const [submitted, setSubmitted] = useState(false);
@@ -215,7 +216,28 @@ const Waitlist = () => {
             />
           </div>
 
-          <button type="submit" className="waitlist-submit">
+          <div className="form-group">
+            <label className="checkbox-label" style={{
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: '10px',
+              fontSize: '14px',
+              lineHeight: '1.5'
+            }}>
+              <input
+                type="checkbox"
+                checked={formData.acceptedPrivacy}
+                onChange={(e) => setFormData(prev => ({...prev, acceptedPrivacy: e.target.checked}))}
+                required
+                style={{ marginTop: '3px', flexShrink: 0 }}
+              />
+              <span>
+                Ao preencher este formulário, autorizo a Facilita.AI a coletar e armazenar meus dados para fins de atendimento comercial, conforme a Lei Geral de Proteção de Dados (LGPD). *
+              </span>
+            </label>
+          </div>
+
+          <button type="submit" className="waitlist-submit" disabled={!formData.acceptedPrivacy}>
             Entrar na Lista de Espera
           </button>
         </form>
