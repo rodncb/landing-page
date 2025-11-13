@@ -535,20 +535,19 @@ ${shouldClose ? "- IMPORTANTE: Esta é a última mensagem. Finalize educadamente
                   />
                 </div>
 
-                <div className="form-group" style={{
+                <div className="privacy-checkbox" style={{
                   marginTop: "16px",
                   marginBottom: "16px",
-                  padding: "12px",
-                  backgroundColor: "rgba(255, 255, 255, 0.1)",
+                  padding: "14px",
+                  backgroundColor: "rgba(18, 18, 18, 0.4)",
+                  border: "1px solid rgba(255, 255, 255, 0.2)",
                   borderRadius: "8px"
                 }}>
                   <label
                     style={{
                       display: "flex",
                       alignItems: "flex-start",
-                      gap: "10px",
-                      fontSize: "13px",
-                      lineHeight: "1.6",
+                      gap: "12px",
                       cursor: "pointer",
                       margin: 0
                     }}
@@ -563,12 +562,16 @@ ${shouldClose ? "- IMPORTANTE: Esta é a última mensagem. Finalize educadamente
                         flexShrink: 0,
                         width: "18px",
                         height: "18px",
-                        accentColor: "#ff4b55"
+                        accentColor: "#ff4b55",
+                        minWidth: "18px"
                       }}
                     />
                     <span style={{
-                      color: "#ffffff",
-                      fontWeight: "400"
+                      color: "#fff",
+                      fontSize: "13px",
+                      lineHeight: "1.6",
+                      fontWeight: "400",
+                      opacity: "0.95"
                     }}>
                       Ao preencher este formulário, autorizo a Facilita.AI a coletar e armazenar meus dados para fins de atendimento comercial, conforme a Lei Geral de Proteção de Dados (LGPD).
                     </span>
