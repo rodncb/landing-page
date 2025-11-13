@@ -556,7 +556,10 @@ ${shouldClose ? "- IMPORTANTE: Esta é a última mensagem. Finalize educadamente
                         cursor: "pointer",
                         flexShrink: 0,
                         width: "16px",
-                        height: "16px"
+                        height: "16px",
+                        accentColor: "#ff4b55",
+                        border: "2px solid rgba(255, 255, 255, 0.3)",
+                        borderRadius: "3px"
                       }}
                     />
                     <span>
