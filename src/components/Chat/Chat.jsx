@@ -19,6 +19,12 @@ const Chat = () => {
   const [leadPhone, setLeadPhone] = useState("");
   const [isLeadFormValid, setIsLeadFormValid] = useState(false);
 
+  // Controle de encerramento e inatividade
+  const [userMessageCount, setUserMessageCount] = useState(0);
+  const [isConversationClosed, setIsConversationClosed] = useState(false);
+  const inactivityTimerRef = useRef(null);
+  const closingTimerRef = useRef(null);
+
   // Ref para scroll automático
   const messagesEndRef = useRef(null);
 
@@ -102,6 +108,47 @@ const Chat = () => {
     setMessages([welcomeMessage]);
   };
 
+  // Função para salvar histórico completo da conversa
+  const saveConversationHistory = async () => {
+    const GOOGLE_SHEETS_WEBHOOK =
+      "https://script.google.com/macros/s/AKfycbwb2wN1KxI2MOAXU2Sk3AFs0XbreSeFUlnAslfoERSsz_9fgWA-RurAB_VWUObMxnV3Fw/exec";
+
+    // Formatar histórico como texto
+    const conversationText = messages
+      .map((msg) => {
+        const time = new Date(msg.timestamp).toLocaleTimeString("pt-BR", {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+        const sender = msg.sender === "user" ? leadName : "LIA";
+        return `[${time}] ${sender}: ${msg.text}`;
+      })
+      .join("\n");
+
+    try {
+      await fetch(GOOGLE_SHEETS_WEBHOOK, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: leadName,
+          email: leadEmail,
+          phone: leadPhone,
+          source: "Chat Landing Page - Histórico Completo",
+          timestamp: new Date().toISOString(),
+          conversation: conversationText,
+          messageCount: userMessageCount + 1,
+        }),
+      });
+
+      console.log("Histórico da conversa salvo com sucesso!");
+    } catch (error) {
+      console.error("Erro ao salvar histórico:", error);
+    }
+  };
+
   // Atualizar a data e hora a cada minuto
   useEffect(() => {
     const timer = setInterval(() => {
@@ -111,33 +158,93 @@ const Chat = () => {
     return () => clearInterval(timer);
   }, []);
 
+  // Limpar timers de inatividade
+  const clearInactivityTimers = () => {
+    if (inactivityTimerRef.current) {
+      clearTimeout(inactivityTimerRef.current);
+      inactivityTimerRef.current = null;
+    }
+    if (closingTimerRef.current) {
+      clearTimeout(closingTimerRef.current);
+      closingTimerRef.current = null;
+    }
+  };
+
+  // Iniciar timer de inatividade (3 minutos)
+  const startInactivityTimer = () => {
+    clearInactivityTimers();
+
+    // Timer de 3 minutos - pergunta se está aí
+    inactivityTimerRef.current = setTimeout(() => {
+      const inactivityMessage = {
+        id: `inactivity_${Date.now()}`,
+        text: "Você ainda está aí? Posso ajudar com mais alguma coisa?",
+        sender: "bot",
+        timestamp: new Date().toISOString(),
+      };
+      setMessages((prev) => [...prev, inactivityMessage]);
+
+      // Timer de 5 minutos - encerra conversa
+      closingTimerRef.current = setTimeout(() => {
+        const closingMessage = {
+          id: `closing_${Date.now()}`,
+          text: "Entendi que você precisou se ausentar. Quando quiser retomar, é só abrir o chat novamente. A equipe Facilita.AI está à disposição! 👋",
+          sender: "bot",
+          timestamp: new Date().toISOString(),
+        };
+        setMessages((prev) => [...prev, closingMessage]);
+        setIsConversationClosed(true);
+
+        // Salvar histórico antes de fechar
+        setTimeout(() => {
+          saveConversationHistory();
+        }, 500);
+
+        // Fecha o chat após 3 segundos
+        setTimeout(() => {
+          setIsChatOpen(false);
+        }, 3000);
+      }, 5 * 60 * 1000); // 5 minutos
+    }, 3 * 60 * 1000); // 3 minutos
+  };
+
+  // Resetar conversa
+  const resetConversation = () => {
+    setMessages([]);
+    setUserMessageCount(0);
+    setIsConversationClosed(false);
+    clearInactivityTimers();
+  };
+
   // Função para enviar mensagem para o chat
   const sendMessage = async (message) => {
     try {
       setIsTyping(true);
 
-      // Usar API configurada (LM Studio em dev, VPS em produção)
-      try {
-        // URL da API (vem do config)
-        const apiUrl = CHAT_API_URL;
+      // Reiniciar timer de inatividade
+      startInactivityTimer();
 
-          // Formatar a data e hora atual para informar ao modelo
-          const formattedDateTime = currentDateTime.toLocaleString("pt-BR", {
-            weekday: "long",
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-            hour: "2-digit",
-            minute: "2-digit",
-          });
+      // Formatar a data e hora atual para informar ao modelo
+      const formattedDateTime = currentDateTime.toLocaleString("pt-BR", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+      });
 
-          // Preparar o payload para a API
-          const payload = {
-            model: "qwen2.5:3b",
-            messages: [
-              {
-                role: "system",
-                content: `Você é a LIA (Líder em Inteligência Artificial), assistente virtual da Facilita.AI. Hoje é ${formattedDateTime}.
+      // Construir histórico de mensagens no formato da API
+      const conversationHistory = messages.map((msg) => ({
+        role: msg.sender === "user" ? "user" : "assistant",
+        content: msg.text,
+      }));
+
+      // Verificar se deve encerrar a conversa (5ª mensagem)
+      const shouldClose = userMessageCount >= 4; // 5ª mensagem (começa em 0)
+
+      // System prompt com instruções de encerramento
+      const systemPrompt = `Você é a LIA (Líder em Inteligência Artificial), assistente virtual da Facilita.AI. Hoje é ${formattedDateTime}.
 
 SOBRE A FACILITA.AI:
 - Software house especializada em soluções com IA
@@ -159,97 +266,120 @@ COMO RESPONDER:
 - Fale na primeira pessoa quando mencionar a LIA ("Eu sou a LIA...")
 - Destaque que você atende 24/7 no WhatsApp
 - Para preços: diga que são personalizados, consultor entra em contato em breve
-- Sempre pergunte se pode ajudar com mais algo
+${shouldClose ? "- IMPORTANTE: Esta é a última mensagem. Finalize educadamente resumindo o que o cliente precisa e informe que a equipe entrará em contato em breve. Use algo como 'Entendi que você precisa de [resumo]... Nossa equipe comercial da Facilita.AI entrará em contato em breve!'" : "- Na 4ª interação, comece a direcionar para conclusão naturalmente se já entendeu a necessidade"}
 - Tom: amigável, profissional, consultivo
-- NÃO use asteriscos (*) nem emojis`,
-              },
-              {
-                role: "user",
-                content: message,
-              },
-            ],
-            temperature: 0.7,
-            max_tokens: 250,
-          };
+- NÃO use asteriscos (*) nem emojis`;
 
-          // Preparar headers (adicionar API Key em produção)
-          const headers = {
-            "Content-Type": "application/json",
-          };
+      // Preparar payload base
+      const messagesPayload = [
+        {
+          role: "system",
+          content: systemPrompt,
+        },
+        ...conversationHistory,
+        {
+          role: "user",
+          content: message,
+        },
+      ];
 
-          if (API_KEY) {
-            headers["X-API-Key"] = API_KEY;
-          }
+      let responseText = "";
 
-          // Fazer a chamada à API
-          const response = await fetch(apiUrl, {
-            method: "POST",
-            headers: headers,
-            body: JSON.stringify(payload),
-          });
+      // Tentar API (VPS ou fallback configurado no backend)
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 30000);
 
-          if (!response.ok) {
-            throw new Error(`Erro na API: ${response.status}`);
-          }
-
-          const data = await response.json();
-
-          // Extrair a resposta do modelo
-          let responseText = data.choices[0].message.content;
-
-          // Processar a resposta para garantir que não tenha asteriscos nem emojis
-          responseText = responseText.replace(/\*/g, "");
-
-          // Verificar se a resposta contém informações sobre preços específicos
-          if (
-            /R\$\s*\d+/.test(responseText) ||
-            /reais|valor específico|custa/.test(responseText.toLowerCase())
-          ) {
-            responseText =
-              "Nossos planos são personalizados de acordo com as necessidades do seu negócio. Nossa equipe comercial entrará em contato para discutir as melhores opções para você. Posso ajudar com mais alguma coisa?";
-          }
-
-          // Verificar se a resposta já termina com uma pergunta
-          if (!responseText.match(/\?$/)) {
-            responseText += "\n\nPosso ajudar com mais alguma coisa?";
-          }
-
-          const botMessage = {
-            id: `resp_${Date.now()}`,
-            text: responseText,
-            sender: "bot",
-            timestamp: new Date().toISOString(),
-          };
-
-          setMessages((prev) => [...prev, botMessage]);
-          setIsTyping(false);
-          return true;
-        } catch (error) {
-          console.error("Erro ao conectar com a API:", error);
-
-          // Fallback: usar respostas simuladas
-          setTimeout(() => {
-            const fallbackMessage = {
-              id: `resp_${Date.now()}`,
-              text: "Desculpe, estou com dificuldades técnicas no momento. Nossa equipe já foi notificada. Por favor, tente novamente em alguns minutos ou entre em contato via WhatsApp.",
-              sender: "bot",
-              timestamp: new Date().toISOString(),
-            };
-            setMessages((prev) => [...prev, fallbackMessage]);
-            setIsTyping(false);
-          }, 1500);
-          return false;
-        }
-      } catch (outerError) {
-        console.error("Erro geral:", outerError);
-        setIsTyping(false);
-        return false;
+      const headers = {
+        "Content-Type": "application/json",
+      };
+      if (API_KEY) {
+        headers["X-API-Key"] = API_KEY;
       }
+
+      const response = await fetch(CHAT_API_URL, {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify({
+          model: "qwen2.5:3b",
+          messages: messagesPayload,
+          temperature: 0.7,
+          max_tokens: 250,
+        }),
+        signal: controller.signal,
+      });
+
+      clearTimeout(timeoutId);
+
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`);
+      }
+
+      const data = await response.json();
+      responseText = data.choices[0].message.content;
+
+      // Processar resposta
+      responseText = responseText.replace(/\*/g, "");
+
+      // Verificar preços específicos
+      if (
+        /R\$\s*\d+/.test(responseText) ||
+        /reais|valor específico|custa/.test(responseText.toLowerCase())
+      ) {
+        responseText =
+          "Nossos planos são personalizados de acordo com as necessidades do seu negócio. Nossa equipe comercial entrará em contato para discutir as melhores opções para você. Posso ajudar com mais alguma coisa?";
+      }
+
+      // Adicionar pergunta final se não tiver
+      if (!shouldClose && !responseText.match(/\?$/)) {
+        responseText += "\n\nPosso ajudar com mais alguma coisa?";
+      }
+
+      const botMessage = {
+        id: `resp_${Date.now()}`,
+        text: responseText,
+        sender: "bot",
+        timestamp: new Date().toISOString(),
+      };
+
+      setMessages((prev) => [...prev, botMessage]);
+      setIsTyping(false);
+
+      // Se atingiu 5 mensagens, encerrar conversa
+      if (shouldClose) {
+        clearInactivityTimers();
+        setIsConversationClosed(true);
+
+        // Salvar histórico completo após um pequeno delay
+        setTimeout(() => {
+          saveConversationHistory();
+        }, 1000);
+      }
+
+      return true;
+    } catch (error) {
+      console.error("Todas as APIs falharam:", error);
+
+      // Fallback final: mensagem de erro
+      setTimeout(() => {
+        const fallbackMessage = {
+          id: `resp_${Date.now()}`,
+          text: "Desculpe, estou com dificuldades técnicas no momento. Nossa equipe já foi notificada. Por favor, tente novamente em alguns minutos ou entre em contato via WhatsApp.",
+          sender: "bot",
+          timestamp: new Date().toISOString(),
+        };
+        setMessages((prev) => [...prev, fallbackMessage]);
+        setIsTyping(false);
+      }, 1500);
+      return false;
+    }
   };
 
   // Enviar mensagem quando o usuário clica no botão ou pressiona Enter
   const handleSendMessage = async () => {
-    if (!newMessage.trim()) return;
+    if (!newMessage.trim() || isConversationClosed) return;
+
+    // Incrementar contador de mensagens do usuário
+    setUserMessageCount((prev) => prev + 1);
 
     const userMessage = {
       id: `user_${Date.now()}`,
@@ -463,26 +593,39 @@ COMO RESPONDER:
               </div>
 
               <div className="chat-input-container">
-                <textarea
-                  className="chat-input"
-                  value={newMessage}
-                  onChange={(e) => setNewMessage(e.target.value)}
-                  onKeyPress={handleKeyPress}
-                  placeholder="Digite sua mensagem..."
-                  rows={1}
-                />
-                <button
-                  className="chat-send"
-                  onClick={handleSendMessage}
-                  disabled={!newMessage.trim() || isTyping}
-                >
-                  <svg viewBox="0 0 24 24" width="24" height="24">
-                    <path
-                      fill="currentColor"
-                      d="M2,21L23,12L2,3V10L17,12L2,14V21Z"
+                {isConversationClosed ? (
+                  <button
+                    className="chat-send lead-submit"
+                    onClick={resetConversation}
+                    style={{ width: "100%", margin: "10px 0" }}
+                  >
+                    Nova Conversa
+                  </button>
+                ) : (
+                  <>
+                    <textarea
+                      className="chat-input"
+                      value={newMessage}
+                      onChange={(e) => setNewMessage(e.target.value)}
+                      onKeyPress={handleKeyPress}
+                      placeholder="Digite sua mensagem..."
+                      rows={1}
+                      disabled={isConversationClosed}
                     />
-                  </svg>
-                </button>
+                    <button
+                      className="chat-send"
+                      onClick={handleSendMessage}
+                      disabled={!newMessage.trim() || isTyping || isConversationClosed}
+                    >
+                      <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path
+                          fill="currentColor"
+                          d="M2,21L23,12L2,3V10L17,12L2,14V21Z"
+                        />
+                      </svg>
+                    </button>
+                  </>
+                )}
               </div>
             </>
           )}

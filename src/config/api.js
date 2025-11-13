@@ -3,6 +3,7 @@
  *
  * Em desenvolvimento: usa LM Studio local
  * Em produção: usa API na VPS com Qwen via Ollama
+ * Fallback: OpenAI (gpt-4o-mini) em caso de falha da VPS
  */
 
 // Detectar ambiente
@@ -21,6 +22,14 @@ const API_CONFIG = {
     chatApiUrl: "https://api.facilitaai.com.br/v1/chat/completions",
     apiKey: "fclt_e18cd881811446635ce7578b1911bbd4",
   },
+};
+
+// OpenAI como fallback de emergência
+export const OPENAI_CONFIG = {
+  apiUrl: "https://api.openai.com/v1/chat/completions",
+  // API Key será fornecida via proxy da VPS para não expor no frontend
+  apiKey: null,
+  model: "gpt-4o-mini", // Modelo econômico e rápido
 };
 
 // Exportar configuração baseada no ambiente
