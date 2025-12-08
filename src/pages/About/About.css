@@ -1,0 +1,197 @@
+.about-page {
+  padding-top: 80px; /* Header height */
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.about-hero {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.about-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+.about-intro {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  max-width: 800px;
+  margin: 0 auto 24px;
+}
+
+.section-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 48px;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.about-roots {
+  padding: 80px 0;
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.roots-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.roots-content p {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.about-mvv {
+  padding: 80px 0;
+}
+
+.mvv-intro {
+  text-align: center;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: -24px auto 48px;
+}
+
+.mvv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+}
+
+.mvv-card {
+  background: var(--card-bg);
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+}
+
+.mvv-card h3 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 16px;
+}
+
+.mvv-card p, .values-list li {
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.values-list {
+  padding-left: 20px;
+}
+
+.values-list li {
+  margin-bottom: 12px;
+}
+
+.about-team {
+  padding: 80px 0;
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.team-intro {
+  text-align: center;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: -24px auto 48px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 48px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.team-card {
+  text-align: center;
+  background: var(--card-bg);
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+}
+
+.team-avatar-placeholder {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  margin: 0 auto 24px;
+}
+
+.team-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.team-role {
+  display: block;
+  color: var(--primary-color);
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.team-card p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.team-link {
+  color: var(--text-primary);
+  text-decoration: underline;
+  font-size: 0.9rem;
+}
+
+.about-cta {
+  padding: 100px 0;
+  text-align: center;
+  background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(37, 99, 235, 0.1) 100%);
+}
+
+.about-cta h2 {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+
+.about-cta p {
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+  font-size: 1.125rem;
+}
+
+@media (max-width: 768px) {
+  .about-title {
+    font-size: 2rem;
+  }
+  
+  .about-hero, .about-roots, .about-mvv, .about-team {
+    padding: 60px 0;
+  }
+}

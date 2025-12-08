@@ -7,32 +7,32 @@ const LiaSection = () => {
     {
       icon: <Mic className="feature-icon" />,
       title: "Transcrição de Áudios",
-      description: "Cliente mandou áudio? LIA transcreve em segundos. Você lê rapidinho e responde na hora certa."
+      description: "LIA converte áudios em texto em segundos. Você entende tudo rapidamente e responde no tempo certo, sem ruído e sem perda de contexto."
     },
     {
       icon: <MessageCircle className="feature-icon" />,
       title: "Conversação Natural",
-      description: "IA que entende contexto e responde como humano. Atendimento 24/7 sem perder a qualidade."
+      description: "IA treinada para compreender contexto e responder como um humano. Atendimento inteligente, rápido e disponível o tempo todo."
     },
     {
       icon: <TrendingUp className="feature-icon" />,
       title: "Qualificação Automática",
-      description: "LIA identifica leads quentes e prioriza automaticamente. Foque apenas nos clientes prontos."
+      description: "LIA identifica intenção, urgência e interesse do cliente. Leads quentes são priorizados automaticamente para sua equipe."
     },
     {
       icon: <LinkIcon className="feature-icon" />,
-      title: "Integração com CRM",
-      description: "Conversas viram leads no CRM automaticamente. Gestão completa em um só lugar."
+      title: "Integrações com CRM",
+      description: "Cada conversa vira um lead organizado no CRM. Funil completo, histórico salvo e gestão muito mais eficiente"
     },
     {
       icon: <Bot className="feature-icon" />,
       title: "Personalização Total",
-      description: "Adapte LIA para o vocabulário do seu negócio. Atendimento alinhado com sua marca."
+      description: "Ajuste linguagem, fluxo e vocabulário para a realidade do seu negócio. LIA fala exatamente como sua marca."
     },
     {
       icon: <Clock className="feature-icon" />,
       title: "Disponível 24/7",
-      description: "Nunca perca um lead por falta de horário. LIA trabalha enquanto você descansa."
+      description: "Atendimento contínuo, mesmo fora do horário comercial. LIA trabalha enquanto sua equipe descansa."
     }
   ];
 
@@ -48,8 +48,7 @@ const LiaSection = () => {
             LIA - Sua Assistente Inteligente no WhatsApp
           </h2>
           <p className="lia-subtitle">
-            Atenda leads 24/7, qualifique automaticamente e nunca perca uma venda.
-            Tudo pelo WhatsApp que seu cliente já usa.
+            Atenda e qualifique leads automaticamente, 24 horas por dia, no WhatsApp que seu cliente já usa. Mais agilidade, menos perdas e vendas todos os dias.
           </p>
         </div>
 

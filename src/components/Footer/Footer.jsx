@@ -1,8 +1,27 @@
 import "./Footer.css";
 import logo from "../../images/Logo.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleNavClick = (sectionId) => {
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollTo: sectionId } });
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const headerHeight = 80;
+        const elementPosition = element.offsetTop - headerHeight;
+        window.scrollTo({
+          top: elementPosition,
+          behavior: "smooth",
+        });
+      }
+    }
+  };
+
   const whatsappNumber = "5524981058194";
   const message = "Olá! Gostaria de conhecer as soluções da Facilita.AI";
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
@@ -55,13 +74,13 @@ const Footer = () => {
           <h4>Serviços</h4>
           <ul>
             <li>
-              <a href="#servicos">LIA - WhatsApp com IA</a>
+              <button onClick={() => handleNavClick("lia-section")} className="footer-link-button">LIA - WhatsApp com IA</button>
             </li>
             <li>
-              <a href="#servicos">CRM</a>
+              <button onClick={() => handleNavClick("servicos")} className="footer-link-button">CRM</button>
             </li>
             <li>
-              <a href="#servicos">Softwares Personalizados</a>
+              <button onClick={() => handleNavClick("servicos")} className="footer-link-button">Softwares Personalizados</button>
             </li>
             <li>
               <Link to="/waitlist">Entrar na Lista</Link>
@@ -74,13 +93,16 @@ const Footer = () => {
           <h4>Empresa</h4>
           <ul>
             <li>
-              <a href="#lia-section">Sobre LIA</a>
+              <Link to="/about">Sobre a Facilita</Link>
             </li>
             <li>
-              <a href="#portfolio">Por que nós</a>
+              <button onClick={() => handleNavClick("portfolio")} className="footer-link-button">Por que nós</button>
             </li>
             <li>
-              <Link to="/waitlist">Entrar em contato</Link>
+              <Link to="/blog">Blog</Link>
+            </li>
+            <li>
+              <Link to="/contato">Entrar em contato</Link>
             </li>
           </ul>
         </div>
@@ -90,13 +112,13 @@ const Footer = () => {
           <h4>Recursos</h4>
           <ul>
             <li>
-              <a href="#contato">Contato</a>
+              <Link to="/contato">Contato</Link>
             </li>
             <li>
               <Link to="/waitlist">Agendar Demonstração</Link>
             </li>
             <li>
-              <a href="#servicos">Ver Serviços</a>
+              <button onClick={() => handleNavClick("servicos")} className="footer-link-button">Ver Serviços</button>
             </li>
           </ul>
         </div>

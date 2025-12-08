@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import "./Header.css";
 import logo from "../../images/Logo.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   // Handle scroll effect
   useEffect(() => {
@@ -17,6 +19,18 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Handle cross-page scrolling from state
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      const sectionId = location.state.scrollTo;
+      setTimeout(() => {
+        scrollToSection(sectionId);
+      }, 100);
+      // Clean up state
+      window.history.replaceState({}, document.title);
+    }
+  }, [location]);
 
   // Smooth scroll to section
   const scrollToSection = (sectionId) => {
@@ -33,6 +47,14 @@ const Header = () => {
     setIsMenuOpen(false);
   };
 
+  const handleNavClick = (sectionId) => {
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollTo: sectionId } });
+    } else {
+      scrollToSection(sectionId);
+    }
+  };
+
   // WhatsApp contact
   const whatsappNumber = "5524981058194";
   const message = "Olá! Gostaria de conhecer as soluções da Facilita.AI";
@@ -44,24 +66,25 @@ const Header = () => {
     <header className={`header ${isScrolled ? "header--scrolled" : ""}`}>
       <div className="header-container">
         <div className="header-logo">
-          <button
-            onClick={() => scrollToSection("hero")}
-            className="logo-button"
-            aria-label="Ir para o início"
-          >
+          <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="logo-button" aria-label="Ir para o início">
             <img src={logo} alt="Facilita.AI Logo" className="logo-image" />
             <span className="logo-text">
               FACILITA <span className="logo-ai">AI</span>
             </span>
-          </button>
+          </Link>
         </div>
 
         {/* Desktop Navigation */}
         <nav className="nav-menu">
           <ul className="nav-list">
             <li className="nav-item">
+              <Link to="/about" className="nav-link">
+                Sobre
+              </Link>
+            </li>
+            <li className="nav-item">
               <button
-                onClick={() => scrollToSection("servicos")}
+                onClick={() => handleNavClick("servicos")}
                 className="nav-link"
               >
                 Serviços
@@ -69,27 +92,21 @@ const Header = () => {
             </li>
             <li className="nav-item">
               <button
-                onClick={() => scrollToSection("lia-section")}
+                onClick={() => handleNavClick("lia-section")}
                 className="nav-link"
               >
                 LIA
               </button>
             </li>
             <li className="nav-item">
-              <button
-                onClick={() => scrollToSection("portfolio")}
-                className="nav-link"
-              >
-                Por que nós
-              </button>
+              <Link to="/blog" className="nav-link">
+                Blog
+              </Link>
             </li>
             <li className="nav-item">
-              <button
-                onClick={() => scrollToSection("contato")}
-                className="nav-link"
-              >
+              <Link to="/contato" className="nav-link">
                 Contato
-              </button>
+              </Link>
             </li>
           </ul>
         </nav>
@@ -103,9 +120,8 @@ const Header = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className={`mobile-menu-button ${
-            isMenuOpen ? "mobile-menu-button--open" : ""
-          }`}
+          className={`mobile-menu-button ${isMenuOpen ? "mobile-menu-button--open" : ""
+            }`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Menu de navegação"
           aria-expanded={isMenuOpen}
@@ -121,8 +137,18 @@ const Header = () => {
         <div className="mobile-nav-content">
           <ul className="mobile-nav-list">
             <li className="mobile-nav-item">
+              <Link
+                to="/about"
+                onClick={() => setIsMenuOpen(false)}
+                className="mobile-nav-link"
+              >
+                <span className="mobile-nav-icon">🏢</span>
+                Sobre
+              </Link>
+            </li>
+            <li className="mobile-nav-item">
               <button
-                onClick={() => scrollToSection("servicos")}
+                onClick={() => handleNavClick("servicos")}
                 className="mobile-nav-link"
               >
                 <span className="mobile-nav-icon">🚀</span>
@@ -131,7 +157,7 @@ const Header = () => {
             </li>
             <li className="mobile-nav-item">
               <button
-                onClick={() => scrollToSection("lia-section")}
+                onClick={() => handleNavClick("lia-section")}
                 className="mobile-nav-link"
               >
                 <span className="mobile-nav-icon">🤖</span>
@@ -139,22 +165,24 @@ const Header = () => {
               </button>
             </li>
             <li className="mobile-nav-item">
-              <button
-                onClick={() => scrollToSection("portfolio")}
+              <Link
+                to="/blog"
+                onClick={() => setIsMenuOpen(false)}
                 className="mobile-nav-link"
               >
-                <span className="mobile-nav-icon">💼</span>
-                Por que nós
-              </button>
+                <span className="mobile-nav-icon">📝</span>
+                Blog
+              </Link>
             </li>
             <li className="mobile-nav-item">
-              <button
-                onClick={() => scrollToSection("contato")}
+              <Link
+                to="/contato"
+                onClick={() => setIsMenuOpen(false)}
                 className="mobile-nav-link"
               >
                 <span className="mobile-nav-icon">📞</span>
                 Contato
-              </button>
+              </Link>
             </li>
           </ul>
 

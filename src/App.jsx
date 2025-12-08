@@ -9,6 +9,10 @@ import WhyUs from "./components/WhyUs/WhyUs";
 import Footer from "./components/Footer/Footer";
 import Waitlist from "./pages/Waitlist/Waitlist";
 import Chat from "./components/Chat/Chat";
+import About from "./pages/About/About";
+import Blog from "./pages/Blog/Blog";
+import BlogPost from "./pages/Blog/BlogPost";
+import Contact from "./pages/Contact/Contact";
 
 function HomePage() {
   return (
@@ -26,9 +30,8 @@ function HomePage() {
 }
 
 function App() {
-  // Use basename apenas em desenvolvimento (localhost)
-  // Em produção (facilitaai.com.br) usa raiz "/"
-  const basename = import.meta.env.DEV ? "/landing-page" : "/";
+  // Em produção e desenvolvimento local usa raiz "/"
+  const basename = "/";
 
   return (
     <Router basename={basename}>
@@ -36,6 +39,10 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/waitlist" element={<Waitlist />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/contato" element={<Contact />} />
         </Routes>
       </div>
     </Router>

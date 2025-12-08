@@ -5,43 +5,43 @@ const ServicesGrid = () => {
   const services = [
     {
       id: 1,
-      title: "LIA - Assistente WhatsApp",
+      title: "LIA - LEAD INTELLIGENT ASSISTANT",
       description:
         "Assistente inteligente no WhatsApp que atende leads 24/7, qualifica automaticamente e nunca perde uma venda.",
       icon: "🤖",
       features: [
-        "Transcrição de Áudios",
-        "Conversação Natural",
-        "Qualificação de Leads",
-        "Integração com CRM",
+        "Speech-to-Text avançado",
+        "NLP para conversas naturais",
+        "Scoring e qualificação automatizada",
+        "Integração com qualquer CRM",
       ],
       color: "blue",
       category: "lia",
     },
     {
       id: 2,
-      title: "CRM - Gestão de Vendas",
+      title: "CRM FACILITAAI - Gestão de Clientes",
       description:
         "Sistema completo de gestão de relacionamento com clientes para organizar e impulsionar suas vendas.",
       icon: "📊",
       features: [
         "Pipeline Visual",
-        "Gestão de Leads",
-        "Propostas e Contratos",
-        "Análise de Resultados",
+        "Organização Automática de Leads",
+        "Propostas, Contratos e Assinaturas",
+        "Dashboard com Insights e Métricas",
       ],
       color: "red",
       category: "crm",
     },
     {
       id: 3,
-      title: "Softwares Personalizados",
+      title: "SOFTWARES PERSONALIZADOS",
       description:
-        "Desenvolvimento de software sob medida com inteligência artificial para resolver os desafios específicos do seu negócio.",
+        "Desenvolvimento de softwares inteligentes e personalizados, projetados para resolver os desafios reais do seu negócio.",
       icon: "💻",
       features: [
         "Desenvolvimento Full-Stack",
-        "IA Integrada",
+        "Integrações personalizadas",
         "Arquitetura Escalável",
         "Suporte Técnico",
       ],
