@@ -1,25 +1,29 @@
+/* Footer - Wegic Design */
 .footer {
-  background-color: #0b0f19;
-  /* Slightly lighter than main bg */
+  background: var(--primary-navy);
   color: rgba(255, 255, 255, 0.7);
-  padding: 80px 0 24px;
-  border-top: 1px solid var(--border-color);
+  padding: var(--space-4xl) 0 0;
 }
 
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--space-xl);
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: var(--space-2xl);
+}
+
+/* Brand Column */
+.footer-brand {
+  padding-right: var(--space-xl);
 }
 
 .footer-logo {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 24px;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
 }
 
 .footer-logo-image {
@@ -28,23 +32,23 @@
 }
 
 .footer-brand-name {
-  font-family: "Outfit", sans-serif;
-  font-weight: 700;
-  font-size: 1.25rem;
-  color: #ffffff;
-  letter-spacing: -0.02em;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-bold);
+  font-size: var(--text-lg);
+  color: var(--white);
 }
 
-.footer-description {
-  font-size: 0.95rem;
+.footer-tagline {
+  font-size: var(--text-sm);
   line-height: 1.6;
-  margin-bottom: 24px;
-  max-width: 300px;
+  margin: 0 0 var(--space-lg);
+  font-family: var(--font-family-secondary);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .footer-social {
   display: flex;
-  gap: 16px;
+  gap: var(--space-sm);
 }
 
 .social-icon {
@@ -52,27 +56,30 @@
   height: 40px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
-  transition: all 0.3s ease;
-  border: 1px solid transparent;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all var(--transition-spring);
 }
 
 .social-icon:hover {
-  background: var(--primary-color);
-  color: white;
+  background: var(--primary-purple);
+  border-color: var(--primary-purple);
+  color: var(--white);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }
 
+/* Columns */
 .footer-column h4 {
-  font-family: "Outfit", sans-serif;
-  color: #ffffff;
-  font-size: 1.125rem;
-  font-weight: 600;
-  margin-bottom: 24px;
+  font-family: var(--font-family-primary);
+  color: var(--white);
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  margin: 0 0 var(--space-md);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .footer-column ul {
@@ -82,86 +89,144 @@
 }
 
 .footer-column li {
-  margin-bottom: 12px;
+  margin-bottom: var(--space-sm);
 }
 
-.footer-column a,
-.footer-link-button {
-  color: rgba(255, 255, 255, 0.7);
+.footer-column a {
+  color: rgba(255, 255, 255, 0.6);
   text-decoration: none;
-  transition: color 0.2s;
-  font-size: 0.95rem;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  text-align: left;
-  font-family: inherit;
+  font-size: var(--text-sm);
+  font-family: var(--font-family-secondary);
+  transition: all var(--transition-base);
+  display: inline-block;
 }
 
-.footer-column a:hover,
-.footer-link-button:hover {
-  color: var(--primary-color);
+.footer-column a:hover {
+  color: var(--white);
+  transform: translateX(4px);
 }
 
+/* CTA Column */
+.footer-cta-column {
+  background: rgba(255, 255, 255, 0.03);
+  padding: var(--space-lg);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-cta-text {
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 var(--space-md);
+  font-family: var(--font-family-secondary);
+  line-height: 1.5;
+}
+
+.footer-cta-button {
+  display: inline-block;
+  background: var(--primary-orange);
+  color: var(--primary-navy);
+  padding: 12px 24px;
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  font-family: var(--font-family-secondary);
+  text-decoration: none;
+  transition: all var(--transition-spring);
+}
+
+.footer-cta-button:hover {
+  background: #FF9A5A;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 140, 66, 0.3);
+}
+
+/* Footer Bottom */
 .footer-bottom {
-  margin-top: 64px;
-  padding-top: 24px;
+  margin-top: var(--space-3xl);
+  padding: var(--space-lg) 0;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .footer-bottom-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--space-xl);
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: var(--space-md);
+}
+
+.footer-copyright {
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0;
+  font-family: var(--font-family-secondary);
 }
 
 .footer-legal {
   display: flex;
-  gap: 24px;
+  gap: var(--space-lg);
 }
 
 .footer-legal a {
-  font-size: 0.875rem;
-  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.4);
   text-decoration: none;
-  transition: color 0.2s;
+  font-family: var(--font-family-secondary);
+  transition: color var(--transition-base);
 }
 
 .footer-legal a:hover {
-  color: var(--text-primary);
+  color: rgba(255, 255, 255, 0.7);
 }
 
-.footer-copyright {
-  font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.4);
-}
-
+/* Responsive */
 @media (max-width: 1024px) {
   .footer-container {
     grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    padding: 0 var(--space-lg);
   }
 
   .footer-brand {
     grid-column: 1 / -1;
-    margin-bottom: 24px;
+    padding-right: 0;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
+  .footer {
+    padding: var(--space-3xl) 0 0;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    padding: 0 var(--space-md);
+  }
+
+  .footer-cta-column {
+    grid-column: 1 / -1;
+  }
+
+  .footer-bottom-container {
+    padding: 0 var(--space-md);
+  }
+}
+
+@media (max-width: 480px) {
   .footer-container {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: var(--space-lg);
+    padding: 0 var(--space-sm);
   }
 
   .footer-bottom-container {
     flex-direction: column;
     text-align: center;
+    padding: 0 var(--space-sm);
   }
 
   .footer-legal {

@@ -55,22 +55,23 @@ const Header = () => {
     }
   };
 
-  // WhatsApp contact
-  const whatsappNumber = "5524981058194";
-  const message = "Olá! Gostaria de conhecer as soluções da Facilita.AI";
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-    message
-  )}`;
+  // Check if current route is active
+  const isActive = (path) => {
+    if (path === "/" && location.pathname === "/") return true;
+    if (path !== "/" && location.pathname.startsWith(path)) return true;
+    return false;
+  };
+
+  // Calendly link for discovery calls
+  const calendlyLink = "https://calendly.com/facilitaai/discovery";
 
   return (
     <header className={`header ${isScrolled ? "header--scrolled" : ""}`}>
       <div className="header-container">
         <div className="header-logo">
-          <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="logo-button" aria-label="Ir para o início">
-            <img src={logo} alt="Facilita.AI Logo" className="logo-image" />
-            <span className="logo-text">
-              FACILITA <span className="logo-ai">AI</span>
-            </span>
+          <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="logo-button" aria-label="Go to home">
+            <img src={logo} alt="Facilita AI Logo" className="logo-image" />
+            <span className="logo-text">Facilita AI</span>
           </Link>
         </div>
 
@@ -78,52 +79,59 @@ const Header = () => {
         <nav className="nav-menu">
           <ul className="nav-list">
             <li className="nav-item">
-              <Link to="/about" className="nav-link">
-                Sobre
+              <Link to="/" className={`nav-link ${isActive("/") && location.pathname === "/" ? "active" : ""}`}>
+                Home
               </Link>
             </li>
             <li className="nav-item">
-              <button
-                onClick={() => handleNavClick("servicos")}
-                className="nav-link"
-              >
-                Serviços
-              </button>
+              <Link to="/services" className={`nav-link ${isActive("/services") ? "active" : ""}`}>
+                Services
+              </Link>
             </li>
             <li className="nav-item">
-              <button
-                onClick={() => handleNavClick("lia-section")}
-                className="nav-link"
-              >
-                LIA
-              </button>
-            </li>
-            <li className="nav-item">
-              <Link to="/blog" className="nav-link">
+              <Link to="/blog" className={`nav-link ${isActive("/blog") ? "active" : ""}`}>
                 Blog
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/contato" className="nav-link">
-                Contato
+              <Link to="/about" className={`nav-link ${isActive("/about") ? "active" : ""}`}>
+                About
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/contact" className={`nav-link ${isActive("/contact") ? "active" : ""}`}>
+                Contact
               </Link>
             </li>
           </ul>
         </nav>
 
+        {/* Language Selector */}
+        <div className="language-selector">
+          <button className="lang-button" aria-label="Change language">
+            <span className="lang-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+            </span>
+            <span className="lang-code">PT</span>
+          </button>
+        </div>
+
         {/* CTA Button */}
         <div className="header-cta">
-          <Link to="/waitlist" className="cta-button">
-            Iniciar Projeto
+          <Link to="/contact" className="cta-button">
+            Book a Discovery Call
           </Link>
         </div>
 
         {/* Mobile Menu Button */}
         <button
-          className={`mobile-menu-button ${isMenuOpen ? "mobile-menu-button--open" : ""
-            }`}
+          className={`mobile-menu-button ${isMenuOpen ? "mobile-menu-button--open" : ""}`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Menu de navegação"
+          aria-label="Navigation menu"
           aria-expanded={isMenuOpen}
         >
           <span className="hamburger-line"></span>
@@ -138,31 +146,21 @@ const Header = () => {
           <ul className="mobile-nav-list">
             <li className="mobile-nav-item">
               <Link
-                to="/about"
+                to="/"
                 onClick={() => setIsMenuOpen(false)}
                 className="mobile-nav-link"
               >
-                <span className="mobile-nav-icon">🏢</span>
-                Sobre
+                Home
               </Link>
             </li>
             <li className="mobile-nav-item">
-              <button
-                onClick={() => handleNavClick("servicos")}
+              <Link
+                to="/services"
+                onClick={() => setIsMenuOpen(false)}
                 className="mobile-nav-link"
               >
-                <span className="mobile-nav-icon">🚀</span>
-                Serviços
-              </button>
-            </li>
-            <li className="mobile-nav-item">
-              <button
-                onClick={() => handleNavClick("lia-section")}
-                className="mobile-nav-link"
-              >
-                <span className="mobile-nav-icon">🤖</span>
-                LIA
-              </button>
+                Services
+              </Link>
             </li>
             <li className="mobile-nav-item">
               <Link
@@ -170,30 +168,36 @@ const Header = () => {
                 onClick={() => setIsMenuOpen(false)}
                 className="mobile-nav-link"
               >
-                <span className="mobile-nav-icon">📝</span>
                 Blog
               </Link>
             </li>
             <li className="mobile-nav-item">
               <Link
-                to="/contato"
+                to="/about"
                 onClick={() => setIsMenuOpen(false)}
                 className="mobile-nav-link"
               >
-                <span className="mobile-nav-icon">📞</span>
-                Contato
+                About
+              </Link>
+            </li>
+            <li className="mobile-nav-item">
+              <Link
+                to="/contact"
+                onClick={() => setIsMenuOpen(false)}
+                className="mobile-nav-link"
+              >
+                Contact
               </Link>
             </li>
           </ul>
 
           <div className="mobile-nav-cta">
             <Link
-              to="/waitlist"
+              to="/contact"
               onClick={() => setIsMenuOpen(false)}
               className="mobile-cta-button"
             >
-              <span className="mobile-nav-icon">💬</span>
-              Iniciar Projeto
+              Book a Discovery Call
             </Link>
           </div>
         </div>

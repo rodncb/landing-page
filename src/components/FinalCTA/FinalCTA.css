@@ -1,0 +1,161 @@
+/* Final CTA Section - Wegic Design */
+.final-cta-section {
+  padding: var(--space-4xl) 0;
+  background: var(--primary-navy);
+  position: relative;
+  overflow: hidden;
+}
+
+.final-cta-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(255, 140, 66, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.final-cta-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+  position: relative;
+  z-index: 1;
+}
+
+.final-cta-content {
+  text-align: center;
+}
+
+.final-cta-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: var(--font-bold);
+  color: var(--white);
+  margin: 0 0 var(--space-md) 0;
+  font-family: var(--font-family-primary);
+  line-height: 1.2;
+}
+
+.final-cta-subtitle {
+  font-size: var(--text-lg);
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 600px;
+  margin: 0 auto var(--space-2xl);
+  font-family: var(--font-family-secondary);
+  line-height: 1.6;
+}
+
+.final-cta-buttons {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: var(--space-lg);
+}
+
+.final-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gradient-button-primary);
+  color: var(--white);
+  padding: 16px 32px;
+  border-radius: var(--radius-full);
+  font-weight: var(--font-semibold);
+  font-size: var(--text-base);
+  font-family: var(--font-family-secondary);
+  text-decoration: none;
+  transition: all var(--transition-spring);
+  box-shadow: var(--shadow-orange);
+}
+
+.final-cta-primary svg {
+  transition: transform var(--transition-spring);
+}
+
+.final-cta-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: var(--shadow-orange-hover);
+}
+
+.final-cta-primary:hover svg {
+  transform: translateX(4px);
+}
+
+.final-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--white);
+  padding: 16px 32px;
+  border: 2px solid var(--primary-purple);
+  border-radius: var(--radius-full);
+  font-weight: var(--font-semibold);
+  font-size: var(--text-base);
+  font-family: var(--font-family-secondary);
+  text-decoration: none;
+  transition: all var(--transition-spring);
+}
+
+.final-cta-secondary:hover {
+  background: rgba(168, 85, 247, 0.1);
+  border-color: var(--primary-purple-light);
+  transform: translateY(-3px);
+}
+
+.final-cta-subtext {
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+  font-family: var(--font-family-secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .final-cta-section {
+    padding: var(--space-3xl) 0;
+  }
+
+  .final-cta-container {
+    padding: 0 var(--space-md);
+  }
+
+  .final-cta-buttons {
+    flex-direction: column;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .final-cta-primary,
+  .final-cta-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .final-cta-container {
+    padding: 0 var(--space-sm);
+  }
+
+  .final-cta-title {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+
+  .final-cta-subtitle {
+    font-size: var(--text-base);
+  }
+
+  .final-cta-primary,
+  .final-cta-secondary {
+    font-size: var(--text-sm);
+    padding: 12px 20px;
+  }
+}
