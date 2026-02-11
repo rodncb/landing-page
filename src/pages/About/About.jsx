@@ -2,127 +2,150 @@ import "./About.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Chat from "../../components/Chat/Chat";
+import { Link } from "react-router-dom";
 
 const About = () => {
-  const calendlyLink = "https://calendly.com/facilitaai/discovery";
-
-  const values = [
-    {
-      title: "Clarity",
-      description: "We communicate in plain language. No jargon, no confusion—just clear expectations and transparent processes."
-    },
-    {
-      title: "Craft",
-      description: "Every line of code, every automation, every integration is built with care and attention to detail."
-    },
-    {
-      title: "Speed",
-      description: "We move fast without breaking things. Quick iterations, rapid deployment, immediate value."
-    },
-    {
-      title: "Consistency",
-      description: "Reliable systems that work 24/7. Predictable results you can count on every single time."
-    },
-    {
-      title: "Innovation",
-      description: "We stay ahead of the curve, bringing the latest AI and automation technologies to your business."
-    }
-  ];
-
-  const techStack = [
-    "React",
-    "Node.js",
-    "PostgreSQL",
-    "AWS",
-    "OpenAI",
-    "WhatsApp API",
-    "Make",
-    "Zapier",
-    "Google Cloud",
-    "MongoDB"
-  ];
-
   return (
     <>
       <Header />
       <main className="about-page">
-        {/* Hero Section - 2 columns */}
+        {/* Hero Section */}
         <section className="about-hero">
-          <div className="about-hero-container">
-            <div className="about-hero-content">
+          <div className="about-hero-container about-hero-container--centered">
+            <div className="about-hero-content about-hero-content--full">
               <h1 className="about-hero-title">
-                Build. Automate.{" "}
-                <span className="text-gradient-purple">Scale.</span>
+                Sobre a{" "}
+                <span className="text-gradient-purple">Facilita AI</span>
               </h1>
               <p className="about-hero-subtitle">
-                We help companies optimize operations, automate repetitive tasks, and build intelligent systems that drive growth. Our team combines technical expertise with business understanding to deliver solutions that actually work.
+                A Facilita AI nasceu de uma ideia simples e poderosa: tecnologia não deveria complicar o seu dia a dia, e sim destravar crescimento.
+              </p>
+              <p className="about-hero-subtitle">
+                Por isso, mais do que desenvolver software, atuamos como parceiros estratégicos de transformação digital, com foco em impacto real, mensurável e sustentável.
+              </p>
+              <p className="about-hero-highlight">
+                Não entregamos apenas código. Entregamos tempo, eficiência e clareza operacional.
+              </p>
+              <p className="about-hero-subtitle">
+                Combinamos engenharia de software, inteligência artificial e design estratégico para criar soluções que realmente funcionam no dia a dia do seu negócio.
               </p>
             </div>
-            <div className="about-hero-image">
-              <div className="hero-image-placeholder">
-                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="9" cy="7" r="4"></circle>
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                </svg>
-                <span>Team Photo</span>
+          </div>
+        </section>
+
+        {/* Nossas Raízes e Evolução */}
+        <section className="about-history">
+          <div className="about-section-container">
+            <h2 className="about-section-title">Nossas Raízes e Evolução</h2>
+            <div className="about-text-block">
+              <p>
+                A história da Facilita AI começou com uma observação atenta do mercado. Percebemos que, apesar da abundância de ferramentas digitais disponíveis, muitas empresas ainda operavam de maneira fragmentada. Dados ficavam presos em planilhas isoladas, sistemas não conversavam entre si e o potencial humano era desperdiçado em tarefas manuais que poderiam ser automatizadas.
+              </p>
+              <p>
+                O projeto teve origem no encontro de duas visões complementares: a profundidade técnica da programação e a visão estratégica do design e da comunicação. Os fundadores identificaram que o mercado estava cheio de soluções genéricas, mas carecia de personalização. O problema que queriam resolver era claro: eliminar o "caos digital" e criar fluxos de trabalho fluídos e inteligentes.
+              </p>
+              <p>
+                Desde os primeiros projetos até o momento atual, a Facilita AI evoluiu rapidamente. O que começou como consultoria técnica transformou-se em um hub de soluções avançadas, onde utilizamos as mais recentes tecnologias de Inteligência Artificial para resolver dores antigas de negócios de diversos setores.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Missão, Visão e Valores */}
+        <section className="about-mission-section">
+          <div className="about-section-container">
+            <h2 className="about-section-title">Missão, Visão e Valores</h2>
+            <p className="about-section-intro">
+              Nossa filosofia é pautada na entrega de valor real. Não utilizamos tecnologia por vaidade, mas por necessidade e resultado.
+            </p>
+
+            <div className="mission-cards">
+              <div className="mission-card">
+                <h3 className="mission-card-title">Missão</h3>
+                <p>
+                  Simplificar a complexidade tecnológica para empresas, transformando processos manuais em sistemas eficientes e inteligentes que geram lucro e qualidade de vida para as equipes.
+                </p>
+              </div>
+
+              <div className="mission-card">
+                <h3 className="mission-card-title">Visão</h3>
+                <p>
+                  Ser a referência nacional em implementação prática de Inteligência Artificial e automação para o setor de serviços e varejo, reconhecida pela capacidade de resolver problemas complexos com soluções elegantes.
+                </p>
+              </div>
+            </div>
+
+            <div className="values-grid values-grid--two">
+              <div className="value-card">
+                <h3 className="value-title">Inovação com propósito</h3>
+                <p className="value-description">
+                  Só implementamos novidades tecnológicas se elas trouxerem benefício real ao negócio.
+                </p>
+              </div>
+              <div className="value-card">
+                <h3 className="value-title">Transparência</h3>
+                <p className="value-description">
+                  Falamos a língua do cliente, sem "tiques" técnicos desnecessários.
+                </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Values Section */}
-        <section className="about-values">
-          <div className="about-values-container">
-            <div className="values-header">
-              <h2 className="values-title">Our Values</h2>
-              <p className="values-subtitle">
-                The principles that guide everything we do
-              </p>
-            </div>
-            <div className="values-grid">
-              {values.map((value, index) => (
-                <div key={index} className="value-card">
-                  <h3 className="value-title">{value.title}</h3>
-                  <p className="value-description">{value.description}</p>
+        {/* Quem Faz Acontecer */}
+        <section className="about-team">
+          <div className="about-section-container">
+            <h2 className="about-section-title">Quem Faz Acontecer</h2>
+            <p className="about-section-intro">
+              A força da Facilita AI reside na união de competências distintas que se completam. A liderança da empresa combina rigor lógico com pensamento criativo.
+            </p>
+
+            <div className="team-grid">
+              <div className="team-card">
+                <div className="team-avatar">
+                  <span>RN</span>
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
+                <h3 className="team-name">Rodrigo Nonato</h3>
+                <p className="team-role">Full Stack Developer & AI Engineer</p>
+                <p className="team-bio">
+                  A mente técnica por trás das nossas soluções. Como desenvolvedor full stack, domina desde a arquitetura de sistemas e APIs até interfaces modernas e responsivas. Sua especialização em Inteligência Artificial permite integrar automações inteligentes em cada camada da aplicação, transformando problemas complexos em soluções funcionais e escaláveis.
+                </p>
+                <a
+                  href="https://github.com/rodrigobezerra"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="team-link"
+                >
+                  Ver projetos no GitHub
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </a>
+              </div>
 
-        {/* Tech Stack Section */}
-        <section className="about-tech">
-          <div className="about-tech-container">
-            <div className="tech-header">
-              <h2 className="tech-title">Tech Stack</h2>
-              <p className="tech-subtitle">
-                The tools and technologies we use to build your solutions
-              </p>
-            </div>
-            <div className="tech-grid">
-              {techStack.map((tech, index) => (
-                <span key={index} className="tech-badge">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Mission Section */}
-        <section className="about-mission">
-          <div className="about-mission-container">
-            <div className="mission-box">
-              <h2 className="mission-title">Our Mission</h2>
-              <p className="mission-text">
-                Our mission is to build intelligent systems that simplify complexity, automate the mundane, and free teams to focus on what matters most—growing their business and serving their customers.
-              </p>
-              <p className="mission-highlight">
-                We build technology that works{" "}
-                <span className="text-gradient-purple">for you</span>.
-              </p>
+              <div className="team-card">
+                <div className="team-avatar team-avatar--orange">
+                  <span>TR</span>
+                </div>
+                <h3 className="team-name">Tales Rocha</h3>
+                <p className="team-role">Artista Visual e Consultor em TI</p>
+                <p className="team-bio">
+                  Traz a visão humanizada e estratégica para a tecnologia. Com vasta experiência em audiovisual, design e estratégias digitais, ele garante que a tecnologia não seja apenas funcional, mas também intuitiva e alinhada aos objetivos de negócio do cliente. Sua atuação como consultor em TI permite enxergar além do código, focando na experiência do usuário e na aplicação criativa das ferramentas para alavancar marcas e otimizar a comunicação interna e externa.
+                </p>
+                <a
+                  href="https://linkedin.com/in/talesrocha"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="team-link"
+                >
+                  Conectar no LinkedIn
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -130,22 +153,20 @@ const About = () => {
         {/* CTA Section */}
         <section className="about-cta">
           <div className="about-cta-container">
-            <h2 className="about-cta-title">Ready to Transform Your Business?</h2>
+            <h2 className="about-cta-title">Vamos Transformar Seu Negócio?</h2>
             <p className="about-cta-subtitle">
-              Let's discuss how we can help you automate, optimize, and scale.
+              Se sua empresa deseja implementar IA, automações ou software personalizado, fale com a Facilita AI.
             </p>
-            <a
-              href={calendlyLink}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/contact"
               className="cta-primary"
             >
-              Book a Discovery Call
+              Agende uma Conversa
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
-            </a>
+            </Link>
           </div>
         </section>
       </main>

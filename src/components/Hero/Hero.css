@@ -143,13 +143,16 @@
 }
 
 .hero-title {
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: clamp(3rem, 7vw, 5rem);
   font-weight: var(--font-bold);
-  line-height: 1;
+  line-height: 1.1;
   color: var(--white);
   margin: 0 0 var(--space-lg) 0;
   font-family: var(--font-family-primary);
   animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s both;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero-title .text-gradient-purple {
@@ -171,6 +174,35 @@
   margin-left: auto;
   margin-right: auto;
   animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+}
+
+/* Hero Bullet Points */
+.hero-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-2xl) 0;
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xl);
+  flex-wrap: wrap;
+  animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.25s both;
+}
+
+.hero-bullet {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: var(--text-base);
+  font-family: var(--font-family-secondary);
+  font-weight: var(--font-medium);
+}
+
+.hero-bullet-icon {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 /* Hero CTA Buttons */
@@ -320,6 +352,22 @@
   .hero-description {
     font-size: var(--text-base);
     margin-bottom: var(--space-xl);
+  }
+
+  .hero-bullets {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+  }
+
+  .hero-bullet {
+    font-size: var(--text-sm);
+  }
+
+  .hero-bullet-icon {
+    width: 28px;
+    height: 28px;
   }
 
   .hero-cta {

@@ -7,11 +7,11 @@ import Chat from "../../components/Chat/Chat";
 import { blogPosts } from "./blogData";
 
 const Blog = () => {
-  const [activeFilter, setActiveFilter] = useState("All");
+  const [activeFilter, setActiveFilter] = useState("Todos");
 
-  const categories = ["All", "AI & Automation", "CRM", "Business Intelligence", "Productivity", "LIA"];
+  const categories = ["Todos", "IA & Automação", "Tecnologia & Mercado", "Gestão & Vendas"];
 
-  const filteredPosts = activeFilter === "All"
+  const filteredPosts = activeFilter === "Todos"
     ? blogPosts
     : blogPosts.filter(post => post.category === activeFilter);
 
@@ -23,11 +23,11 @@ const Blog = () => {
         <section className="blog-hero">
           <div className="blog-hero-container">
             <h1 className="blog-hero-title">
-              Insights on Automation,{" "}
-              <span className="text-gradient-purple">Intelligence</span>, and Growth
+              Insights sobre Automação,{" "}
+              <span className="text-gradient-purple">Inteligência</span> e Crescimento
             </h1>
             <p className="blog-hero-subtitle">
-              Practical strategies for building systems that save time, cut costs, and drive better decisions.
+              Estratégias práticas para construir sistemas que economizam tempo, reduzem custos e impulsionam decisões melhores.
             </p>
           </div>
         </section>
@@ -54,13 +54,17 @@ const Blog = () => {
               {filteredPosts.map((post) => (
                 <article key={post.id} className="blog-card">
                   <div className="blog-card-image">
-                    <div className="blog-image-placeholder">
-                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                        <polyline points="21 15 16 10 5 21"></polyline>
-                      </svg>
-                    </div>
+                    {post.image ? (
+                      <img src={post.image} alt={post.title} className="blog-image" />
+                    ) : (
+                      <div className="blog-image-placeholder">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+                          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                          <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                          <polyline points="21 15 16 10 5 21"></polyline>
+                        </svg>
+                      </div>
+                    )}
                   </div>
                   <div className="blog-card-content">
                     <div className="blog-meta">
@@ -73,7 +77,7 @@ const Blog = () => {
                     <p className="blog-excerpt">{post.excerpt}</p>
                     <div className="blog-author">
                       <div className="author-avatar">FA</div>
-                      <span className="author-name">Facilita AI Team</span>
+                      <span className="author-name">Equipe Facilita AI</span>
                     </div>
                   </div>
                 </article>

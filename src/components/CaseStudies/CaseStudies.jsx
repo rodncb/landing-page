@@ -4,39 +4,39 @@ import { Link } from "react-router-dom";
 const CaseStudies = () => {
   const caseStudies = [
     {
-      title: "Eyebrow Studio",
-      result: "Saved 15h/week",
+      title: "Studio de Sobrancelhas",
+      result: "15h/semana economizadas",
       badge: "LIA",
       badgeColor: "purple"
     },
     {
-      title: "Real Estate",
-      result: "+32% response speed",
+      title: "Imobiliária",
+      result: "+32% velocidade de resposta",
       badge: "LIA",
       badgeColor: "purple"
     },
     {
-      title: "Premium Gym",
-      result: "Real-time BI dashboard",
+      title: "Academia Premium",
+      result: "Dashboard BI em tempo real",
       badge: "Custom",
       badgeColor: "orange"
     },
     {
-      title: "Services",
-      result: "-40% reporting time",
+      title: "Serviços",
+      result: "-40% tempo de relatórios",
       badge: "Custom",
       badgeColor: "orange"
     },
     {
-      title: "Digital Products",
-      result: "Full integration",
+      title: "Produtos Digitais",
+      result: "Integração completa",
       badge: "API + Website",
       badgeColor: "purple"
     },
     {
-      title: "Consulting",
-      result: "Organized pipeline",
-      badge: "Metrics",
+      title: "Consultoria",
+      result: "Pipeline organizado",
+      badge: "Website",
       badgeColor: "orange"
     }
   ];
@@ -46,10 +46,10 @@ const CaseStudies = () => {
       <div className="case-studies-container">
         <div className="case-studies-header">
           <h2 className="case-studies-title">
-            Proven results <span className="text-gradient-purple">across industries</span>
+            Resultados <span className="text-gradient-purple">comprovados</span>
           </h2>
           <p className="case-studies-subtitle">
-            Real metrics from real businesses using our automation and BI solutions.
+            Empresas reais. Métricas reais. Crescimento real.
           </p>
         </div>
 
@@ -65,15 +65,15 @@ const CaseStudies = () => {
           ))}
         </div>
 
-        <div className="case-studies-cta">
+        {/* <div className="case-studies-cta">
           <Link to="/blog" className="case-studies-link">
-            View all case studies
+            Ver todos os cases
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
           </Link>
-        </div>
+        </div> */}
       </div>
     </section>
   );

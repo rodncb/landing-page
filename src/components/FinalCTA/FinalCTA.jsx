@@ -1,35 +1,33 @@
 import "./FinalCTA.css";
+import { Link } from "react-router-dom";
 
 const FinalCTA = () => {
   const whatsappNumber = "5524981058194";
-  const message = "Hi! I'd like to learn more about Facilita AI solutions";
+  const message = "Olá! Gostaria de saber mais sobre as soluções da Facilita AI";
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-  const calendlyLink = "https://calendly.com/facilitaai/discovery";
 
   return (
     <section className="final-cta-section">
       <div className="final-cta-container">
         <div className="final-cta-content">
           <h2 className="final-cta-title">
-            Ready to build a system that <span className="text-gradient-purple">converts</span>?
+            Pronto para construir um sistema que <span className="text-gradient-purple">converte</span>?
           </h2>
           <p className="final-cta-subtitle">
-            Let's map your current processes, identify opportunities, and build software that drives real results.
+            Vamos discutir seus desafios e construir um sistema que entrega resultados mensuráveis.
           </p>
 
           <div className="final-cta-buttons">
-            <a
-              href={calendlyLink}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/contact"
               className="final-cta-primary"
             >
-              Book a Discovery Call
+              Começar Agora
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
-            </a>
+            </Link>
             <a
               href={whatsappLink}
               target="_blank"
@@ -44,7 +42,7 @@ const FinalCTA = () => {
           </div>
 
           <p className="final-cta-subtext">
-            Free consultation. No commitment required.
+            Consulta gratuita. Sem compromisso.
           </p>
         </div>
       </div>

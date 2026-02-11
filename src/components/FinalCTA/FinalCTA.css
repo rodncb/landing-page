@@ -1,85 +1,72 @@
 /* Final CTA Section - Wegic Design */
 .final-cta-section {
-  padding: var(--space-4xl) 0;
-  background: var(--primary-navy);
-  position: relative;
-  overflow: hidden;
-}
-
-.final-cta-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background:
-    radial-gradient(circle at 20% 50%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 50%, rgba(255, 140, 66, 0.1) 0%, transparent 50%);
-  pointer-events: none;
+  padding: 8rem 0;
+  background: rgba(30, 41, 59, 0.3);
 }
 
 .final-cta-container {
-  max-width: 800px;
+  max-width: 64rem;
   margin: 0 auto;
-  padding: 0 var(--space-xl);
-  position: relative;
-  z-index: 1;
+  padding: 0 1.5rem;
 }
 
 .final-cta-content {
+  background: linear-gradient(to bottom right, rgba(168, 85, 247, 0.05), var(--primary-navy), var(--primary-navy));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  padding: 3rem;
   text-align: center;
 }
 
 .final-cta-title {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.875rem, 4vw, 3rem);
   font-weight: var(--font-bold);
   color: var(--white);
-  margin: 0 0 var(--space-md) 0;
+  margin: 0 0 1.5rem 0;
   font-family: var(--font-family-primary);
   line-height: 1.2;
 }
 
 .final-cta-subtitle {
-  font-size: var(--text-lg);
-  color: rgba(255, 255, 255, 0.8);
-  max-width: 600px;
-  margin: 0 auto var(--space-2xl);
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 42rem;
+  margin: 0 auto 2rem;
   font-family: var(--font-family-secondary);
   line-height: 1.6;
 }
 
 .final-cta-buttons {
   display: flex;
-  gap: var(--space-md);
+  gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: var(--space-lg);
+  margin-bottom: 1rem;
 }
 
 .final-cta-primary {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  background: var(--gradient-button-primary);
-  color: var(--white);
-  padding: 16px 32px;
-  border-radius: var(--radius-full);
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--primary-orange);
+  color: var(--primary-navy);
+  padding: 1rem 2rem;
+  border-radius: 9999px;
   font-weight: var(--font-semibold);
-  font-size: var(--text-base);
+  font-size: 1rem;
   font-family: var(--font-family-secondary);
   text-decoration: none;
-  transition: all var(--transition-spring);
-  box-shadow: var(--shadow-orange);
+  transition: all 0.3s ease;
 }
 
 .final-cta-primary svg {
-  transition: transform var(--transition-spring);
+  transition: transform 0.3s ease;
 }
 
 .final-cta-primary:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: var(--shadow-orange-hover);
+  box-shadow: 0 0 30px rgba(251, 146, 60, 0.4);
+  transform: translateY(-2px);
 }
 
 .final-cta-primary:hover svg {
@@ -89,40 +76,39 @@
 .final-cta-secondary {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 0.5rem;
   background: transparent;
   color: var(--white);
-  padding: 16px 32px;
+  padding: 1rem 2rem;
   border: 2px solid var(--primary-purple);
-  border-radius: var(--radius-full);
+  border-radius: 9999px;
   font-weight: var(--font-semibold);
-  font-size: var(--text-base);
+  font-size: 1rem;
   font-family: var(--font-family-secondary);
   text-decoration: none;
-  transition: all var(--transition-spring);
+  transition: all 0.3s ease;
 }
 
 .final-cta-secondary:hover {
   background: rgba(168, 85, 247, 0.1);
-  border-color: var(--primary-purple-light);
-  transform: translateY(-3px);
 }
 
 .final-cta-subtext {
-  font-size: var(--text-sm);
+  font-size: 0.875rem;
   color: rgba(255, 255, 255, 0.5);
-  margin: 0;
+  margin: 1rem 0 0;
   font-family: var(--font-family-secondary);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .final-cta-section {
-    padding: var(--space-3xl) 0;
+    padding: 4rem 0;
   }
 
-  .final-cta-container {
-    padding: 0 var(--space-md);
+  .final-cta-content {
+    padding: 2rem;
   }
 
   .final-cta-buttons {
@@ -135,27 +121,15 @@
   .final-cta-primary,
   .final-cta-secondary {
     width: 100%;
-    justify-content: center;
-    padding: 14px 24px;
   }
 }
 
 @media (max-width: 480px) {
   .final-cta-container {
-    padding: 0 var(--space-sm);
+    padding: 0 0.75rem;
   }
 
-  .final-cta-title {
-    font-size: clamp(1.5rem, 6vw, 2rem);
-  }
-
-  .final-cta-subtitle {
-    font-size: var(--text-base);
-  }
-
-  .final-cta-primary,
-  .final-cta-secondary {
-    font-size: var(--text-sm);
-    padding: 12px 20px;
+  .final-cta-content {
+    padding: 1.5rem;
   }
 }

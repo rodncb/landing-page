@@ -250,56 +250,52 @@
 .process-steps {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xl);
-  /* Increased gap */
+  gap: var(--space-lg);
   margin-bottom: var(--space-xl);
 }
 
-.process-step {
+.contact-info .process-step {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: var(--space-lg);
+  gap: 0;
   text-align: left;
 }
 
-.step-number {
-  width: 48px;
-  /* Slightly larger like reference */
-  height: 48px;
+.contact-info .step-number {
+  width: 2.5rem;
+  height: 2.5rem;
   background: rgba(168, 85, 247, 0.1);
-  /* Lighter bg like reference */
-  border: 1px solid rgba(168, 85, 247, 0.3);
+  border: 2px solid var(--primary-purple);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--primary-purple);
-  /* Purple number */
   font-weight: var(--font-bold);
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
   font-family: var(--font-family-primary);
   flex-shrink: 0;
+  margin: 0 0.5rem 0 0;
 }
 
-.step-content {
+.contact-info .step-content {
   flex: 1;
-  padding-top: 4px;
-  /* Optical alignment with number */
+  max-width: none;
 }
 
-.step-content h3 {
+.contact-info .step-content h3 {
   font-size: var(--text-lg);
-  /* Larger title */
   font-weight: var(--font-bold);
   color: var(--white);
-  margin: 0 0 var(--space-2xs) 0;
+  margin: 0 0 0.25rem 0;
   font-family: var(--font-family-primary);
+  line-height: 1.3;
 }
 
-.step-content p {
+.contact-info .step-content p {
   font-size: var(--text-sm);
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.6);
   margin: 0;
   line-height: 1.5;
   font-family: var(--font-family-secondary);

@@ -5,27 +5,27 @@ const Process = () => {
     {
       number: 1,
       title: "Discovery",
-      description: "Goals + constraints"
+      description: "Objetivos + restrições"
     },
     {
       number: 2,
-      title: "Spec",
-      description: "Scope + timeline"
+      title: "Especificação",
+      description: "Escopo + cronograma"
     },
     {
       number: 3,
-      title: "Build",
+      title: "Construção",
       description: "Sprints + QA"
     },
     {
       number: 4,
-      title: "Launch",
-      description: "Deploy + train"
+      title: "Lançamento",
+      description: "Deploy + treinamento"
     },
     {
       number: 5,
-      title: "Optimize",
-      description: "Metrics + iteration"
+      title: "Otimização",
+      description: "Métricas + iteração"
     }
   ];
 
@@ -34,11 +34,8 @@ const Process = () => {
       <div className="process-container">
         <div className="process-header">
           <h2 className="process-title">
-            How we <span className="text-gradient-purple">work</span>
+            Como <span className="text-gradient-purple">trabalhamos</span>
           </h2>
-          <p className="process-subtitle">
-            A clear, predictable process from discovery to deployment.
-          </p>
         </div>
 
         <div className="process-timeline">

@@ -37,7 +37,7 @@
 
 /* Deep Dive Section */
 .services-deep-dive {
-  padding: var(--space-lg) 0 var(--space-4xl);
+  padding: var(--space-lg) 0 var(--space-2xl);
   background: var(--primary-navy);
 }
 
@@ -248,7 +248,7 @@
 
 /* CTA Section */
 .services-cta {
-  padding: var(--space-4xl) 0;
+  padding: var(--space-2xl) 0 var(--space-4xl);
   background: var(--primary-navy);
   text-align: center;
 }

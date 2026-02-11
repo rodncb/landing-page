@@ -60,23 +60,23 @@ const Contact = () => {
   const processSteps = [
     {
       number: "1",
-      title: "Submit Your Request",
-      description: "Fill out the form with your project details and requirements."
+      title: "Envie sua Solicitação",
+      description: "Preencha o formulário com os detalhes e necessidades do seu projeto."
     },
     {
       number: "2",
-      title: "We Review",
-      description: "Our team analyzes your request within 24 hours."
+      title: "Analisamos",
+      description: "Nossa equipe analisa sua solicitação em até 24 horas."
     },
     {
       number: "3",
-      title: "Discovery Call",
-      description: "We schedule a 30-minute call to understand your needs."
+      title: "Conversa Inicial",
+      description: "Agendamos uma conversa de 30 minutos para entender suas necessidades."
     },
     {
       number: "4",
-      title: "Custom Proposal",
-      description: "You receive a detailed proposal with scope and investment."
+      title: "Proposta Personalizada",
+      description: "Você recebe uma proposta detalhada com escopo e investimento."
     }
   ];
 
@@ -94,12 +94,12 @@ const Contact = () => {
                     <polyline points="22 4 12 14.01 9 11.01"></polyline>
                   </svg>
                 </div>
-                <h1 className="success-title">Message Received!</h1>
+                <h1 className="success-title">Mensagem Recebida!</h1>
                 <p className="success-text">
-                  Thank you for reaching out. We'll get back to you within 24 hours with clear next steps.
+                  Obrigado pelo contato. Retornaremos em até 24 horas com os próximos passos.
                 </p>
                 <a href="/" className="success-button">
-                  Back to Home
+                  Voltar para Home
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                     <polyline points="12 5 19 12 12 19"></polyline>
@@ -123,11 +123,11 @@ const Contact = () => {
         <section className="contact-hero">
           <div className="contact-hero-container">
             <h1 className="contact-hero-title">
-              Let's Build{" "}
-              <span className="text-gradient-purple">Something Great</span>
+              Vamos Construir{" "}
+              <span className="text-gradient-purple">Algo Incrível</span>
             </h1>
             <p className="contact-hero-subtitle">
-              Tell us about your project. We'll reply within 24 hours with clear next steps.
+              Conte-nos sobre o seu projeto. Respondemos em até 24 horas com os próximos passos.
             </p>
           </div>
         </section>
@@ -140,7 +140,7 @@ const Contact = () => {
               <div className="contact-form-wrapper">
                 <form onSubmit={handleSubmit} className="contact-form">
                   <div className="form-group">
-                    <label htmlFor="name">Full Name *</label>
+                    <label htmlFor="name">Nome Completo *</label>
                     <input
                       type="text"
                       id="name"
@@ -148,7 +148,7 @@ const Contact = () => {
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="John Smith"
+                      placeholder="Seu nome completo"
                     />
                   </div>
 
@@ -162,11 +162,11 @@ const Contact = () => {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        placeholder="john@company.com"
+                        placeholder="seu@email.com"
                       />
                     </div>
                     <div className="form-group">
-                      <label htmlFor="phone">Phone / WhatsApp *</label>
+                      <label htmlFor="phone">Telefone / WhatsApp *</label>
                       <input
                         type="tel"
                         id="phone"
@@ -174,25 +174,25 @@ const Contact = () => {
                         required
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="+1 (555) 000-0000"
+                        placeholder="+55 (00) 00000-0000"
                       />
                     </div>
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="company">Company Name</label>
+                    <label htmlFor="company">Nome da Empresa</label>
                     <input
                       type="text"
                       id="company"
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      placeholder="Your company"
+                      placeholder="Sua empresa"
                     />
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="service">What are you interested in? *</label>
+                    <label htmlFor="service">No que tem interesse? *</label>
                     <select
                       id="service"
                       name="service"
@@ -200,19 +200,19 @@ const Contact = () => {
                       value={formData.service}
                       onChange={handleChange}
                     >
-                      <option value="">Select an option</option>
-                      <option value="LIA - WhatsApp AI Assistant">LIA - WhatsApp AI Assistant</option>
-                      <option value="Multi-page Website">Multi-page Website</option>
-                      <option value="Custom Software">Custom Software</option>
-                      <option value="Process Automation">Process Automation</option>
-                      <option value="System Integration">System Integration</option>
-                      <option value="Consulting">Consulting</option>
-                      <option value="Other">Other</option>
+                      <option value="">Selecione uma opção</option>
+                      <option value="LIA - Assistente IA WhatsApp">LIA - Assistente IA WhatsApp</option>
+                      <option value="CRM FacilitaAI">CRM FacilitaAI</option>
+                      <option value="Software Personalizado">Software Personalizado</option>
+                      <option value="Automação de Processos">Automação de Processos</option>
+                      <option value="Integração de Sistemas">Integração de Sistemas</option>
+                      <option value="Consultoria">Consultoria</option>
+                      <option value="Outro">Outro</option>
                     </select>
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="message">Tell us about your project *</label>
+                    <label htmlFor="message">Conte sobre seu projeto *</label>
                     <textarea
                       id="message"
                       name="message"
@@ -220,7 +220,7 @@ const Contact = () => {
                       value={formData.message}
                       onChange={handleChange}
                       rows="5"
-                      placeholder="Describe what you need, your current challenges, and what success looks like for you..."
+                      placeholder="Descreva o que precisa, seus desafios atuais e como seria o sucesso para você..."
                     ></textarea>
                   </div>
 
@@ -233,7 +233,7 @@ const Contact = () => {
                         checked={formData.privacy}
                         onChange={handleChange}
                       />
-                      <span>I agree to the collection and processing of my data according to the Privacy Policy.</span>
+                      <span>Concordo com a coleta e processamento dos meus dados conforme a Política de Privacidade.</span>
                     </label>
                   </div>
 
@@ -242,7 +242,7 @@ const Contact = () => {
                     className="submit-button"
                     disabled={isSubmitting || !formData.privacy}
                   >
-                    {isSubmitting ? "Sending..." : "Send Message"}
+                    {isSubmitting ? "Enviando..." : "Enviar Mensagem"}
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <line x1="5" y1="12" x2="19" y2="12"></line>
                       <polyline points="12 5 19 12 12 19"></polyline>
@@ -254,8 +254,8 @@ const Contact = () => {
               {/* Info Column */}
               <div className="contact-info">
                 <div className="info-header">
-                  <h2 className="info-title">What Happens Next?</h2>
-                  <p className="info-subtitle">Our simple 4-step process</p>
+                  <h2 className="info-title">O que acontece depois?</h2>
+                  <p className="info-subtitle">Nosso processo simples em 4 etapas</p>
                 </div>
 
                 <div className="process-steps">
@@ -278,16 +278,16 @@ const Contact = () => {
                     </svg>
                   </div>
                   <div className="commitment-content">
-                    <h3 className="commitment-title">Our Commitment</h3>
+                    <h3 className="commitment-title">Nosso Compromisso</h3>
                     <p className="commitment-text">
-                      We respect your privacy. Your information is safe with us and will only be used to contact you about your project.
+                      Respeitamos sua privacidade. Suas informações estão seguras conosco e serão usadas apenas para entrar em contato sobre seu projeto.
                     </p>
                   </div>
                 </div>
 
                 {/* Contact Channels */}
                 <div className="contact-channels">
-                  <h3 className="channels-title">Prefer Direct Contact?</h3>
+                  <h3 className="channels-title">Prefere contato direto?</h3>
                   <div className="channel-item">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>

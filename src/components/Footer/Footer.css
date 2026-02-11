@@ -6,12 +6,12 @@
 }
 
 .footer-container {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 var(--space-xl);
+  padding: 0 var(--space-4xl);
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
-  gap: var(--space-2xl);
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: var(--space-3xl);
 }
 
 /* Brand Column */
@@ -149,9 +149,9 @@
 }
 
 .footer-bottom-container {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 var(--space-xl);
+  padding: 0 var(--space-4xl);
   display: flex;
   justify-content: space-between;
   align-items: center;

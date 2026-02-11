@@ -45,7 +45,7 @@ const LiaSection = () => {
             <span>NOVIDADE</span>
           </div>
           <h2 className="lia-title">
-            LIA - Sua Assistente Inteligente no WhatsApp
+            LIA - Lead Intelligent Assistant
           </h2>
           <p className="lia-subtitle">
             Atenda e qualifique leads automaticamente, 24 horas por dia, no WhatsApp que seu cliente já usa. Mais agilidade, menos perdas e vendas todos os dias.

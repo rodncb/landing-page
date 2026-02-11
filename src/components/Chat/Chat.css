@@ -6,7 +6,7 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #ff6b6b, #ff4b55);
+  background: linear-gradient(135deg, #9A72F6, #7C5CD6);
   border: none;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   cursor: pointer;
@@ -170,7 +170,7 @@
 }
 
 .user-message .message-text {
-  background-color: #ff6b6b;
+  background-color: #9A72F6;
   color: white;
   border-top-right-radius: 4px;
 }
@@ -251,11 +251,11 @@
 }
 
 .chat-input:focus {
-  border-color: #ff6b6b;
+  border-color: #9A72F6;
 }
 
 .chat-send {
-  background: linear-gradient(135deg, #ff6b6b, #ff4b55);
+  background: linear-gradient(135deg, #9A72F6, #7C5CD6);
   border: none;
   width: 36px;
   height: 36px;

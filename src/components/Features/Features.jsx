@@ -8,7 +8,7 @@ const Features = () => {
           <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
         </svg>
       ),
-      title: "Product-led engineering"
+      title: "Engenharia orientada a produto"
     },
     {
       icon: (
@@ -18,7 +18,7 @@ const Features = () => {
           <circle cx="12" cy="12" r="2"></circle>
         </svg>
       ),
-      title: "Sales + operations automation"
+      title: "Automação de vendas + operações"
     },
     {
       icon: (
@@ -27,7 +27,7 @@ const Features = () => {
           <polyline points="12 6 12 12 16 14"></polyline>
         </svg>
       ),
-      title: "Fast implementation"
+      title: "Implementação rápida"
     },
     {
       icon: (
@@ -35,7 +35,7 @@ const Features = () => {
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
         </svg>
       ),
-      title: "Secure by design"
+      title: "Segurança por design"
     },
     {
       icon: (
@@ -45,7 +45,7 @@ const Features = () => {
           <line x1="6" y1="20" x2="6" y2="14"></line>
         </svg>
       ),
-      title: "Measured outcomes"
+      title: "Resultados mensuráveis"
     }
   ];
 

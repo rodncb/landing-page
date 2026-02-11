@@ -3,74 +3,74 @@ import "./Services.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Chat from "../../components/Chat/Chat";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   const [openAccordion, setOpenAccordion] = useState(0);
 
   const whatsappNumber = "5524981058194";
-  const message = "Hi! I'd like to learn more about Facilita AI solutions";
+  const message = "Olá! Gostaria de saber mais sobre as soluções da Facilita AI";
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-  const calendlyLink = "https://calendly.com/facilitaai/discovery";
 
   const services = [
     {
-      title: "LIA – WhatsApp AI Assistant",
-      subtitle: "Never lose a lead again",
-      description: "LIA is a GPT-4o powered AI assistant that lives in WhatsApp, handling your leads 24/7 with human-like conversations tailored to your business.",
+      title: "LIA – Assistente de IA no WhatsApp",
+      subtitle: "Nunca perca um lead novamente",
+      description: "LIA é um assistente de IA powered by GPT-4o que vive no WhatsApp, atendendo seus leads 24/7 com conversas naturais personalizadas para seu negócio.",
       outcomes: [
-        "Instant response to every inquiry",
-        "Automatic lead qualification",
-        "Seamless handoff to human agents"
+        "Resposta instantânea a cada consulta",
+        "Qualificação automática de leads",
+        "Transição suave para atendimento humano"
       ],
       deliverables: [
-        "Custom GPT-4o configuration",
-        "WhatsApp Business integration",
-        "Industry-specific training",
-        "Conversation analytics dashboard"
+        "Configuração personalizada do GPT-4o",
+        "Integração com WhatsApp Business",
+        "Treinamento específico para seu setor",
+        "Dashboard de análise de conversas"
       ],
-      timeline: "2-3 weeks",
-      bestFit: "Ideal for businesses receiving high WhatsApp inquiry volume who want to capture every lead without missing opportunities."
+      timeline: "2-3 semanas",
+      bestFit: "Ideal para negócios que recebem muitas consultas via WhatsApp e querem capturar todos os leads sem perder oportunidades."
     },
     {
-      title: "Multi-page Website",
-      subtitle: "Premium digital presence for your brand",
-      description: "Sophisticated, modern, conversion-oriented websites that position your brand with authority and generate consistent demand. We don't build generic corporate sites—we create conversion machines disguised as premium design.",
+      title: "Website Multi-page",
+      subtitle: "Sua marca com presença digital premium",
+      description: "Websites sofisticados, modernos e orientados à conversão que posicionam sua marca com autoridade e geram demanda de forma consistente. Não fazemos sites institucionais genéricos—criamos máquinas de conversão disfarçadas de design premium.",
       outcomes: [
-        "Website that converts visitors into qualified leads",
-        "Lightning-fast loading and responsive",
-        "SEO-optimized to rank on Google",
-        "Design that conveys credibility and authority"
+        "Site que converte visitantes em leads qualificados",
+        "Carregamento ultrarrápido e responsivo",
+        "SEO otimizado para ranquear no Google",
+        "Design que transmite credibilidade e autoridade"
       ],
       deliverables: [
-        "Custom modern design",
-        "Essential pages (Home, Services, About, Blog, Contact)",
-        "Integrated blog system",
-        "Contact and lead capture forms",
-        "Google Analytics integration",
-        "Performance and SEO optimization"
+        "Design personalizado e moderno",
+        "Páginas essenciais (Home, Serviços, Sobre, Blog, Contato)",
+        "Sistema de blog integrado",
+        "Formulários de contato e captura",
+        "Integração com Google Analytics",
+        "Otimização de performance e SEO"
       ],
-      timeline: "3-4 weeks",
-      bestFit: "Perfect for businesses that need professional digital presence, want to establish market authority, and capture leads consistently."
+      timeline: "3-4 semanas",
+      bestFit: "Perfeito para empresas que precisam de presença digital profissional, querem gerar autoridade no mercado e capturar leads de forma consistente."
     },
     {
-      title: "Custom Software",
-      subtitle: "Build exactly what your business needs",
-      description: "From web applications to internal tools, we build custom software that fits your exact requirements and integrates seamlessly with your existing systems.",
+      title: "Software Personalizado",
+      subtitle: "Construa exatamente o que seu negócio precisa",
+      description: "Desde aplicações web até ferramentas internas, construímos software sob medida que se encaixa perfeitamente nos seus processos e se integra de forma fluida aos seus sistemas existentes.",
       outcomes: [
-        "Solution 100% tailored to your processes",
-        "Scalable and modern architecture",
-        "Responsive design for any device",
-        "Full ownership of the code"
+        "Solução 100% adaptada aos seus processos",
+        "Arquitetura escalável e moderna",
+        "Design responsivo para qualquer dispositivo",
+        "Propriedade total do código"
       ],
       deliverables: [
-        "Requirements and process analysis",
-        "Interface and experience design",
-        "Full-stack development",
-        "Testing and quality assurance",
-        "Deployment and team training"
+        "Análise de requisitos e processos",
+        "Design de interface e experiência",
+        "Desenvolvimento full-stack",
+        "Testes e garantia de qualidade",
+        "Deploy e treinamento da equipe"
       ],
-      timeline: "6-12 weeks",
-      bestFit: "For businesses with unique processes that off-the-shelf solutions can't address, or that need complex system integrations."
+      timeline: "6-12 semanas",
+      bestFit: "Para empresas com processos únicos que soluções prontas não conseguem atender, ou que precisam de integrações complexas entre sistemas."
     }
   ];
 
@@ -86,10 +86,10 @@ const Services = () => {
         <section className="services-hero">
           <div className="services-hero-container">
             <h1 className="services-hero-title">
-              Pick what you need. We'll handle the build.
+              Escolha o que você precisa. Nós cuidamos da <span className="text-gradient-purple">construção</span>.
             </h1>
             <p className="services-hero-subtitle">
-              Modular services for businesses seeking speed, clarity, and results.
+              Serviços modulares para empresas que buscam velocidade, clareza e resultados.
             </p>
           </div>
         </section>
@@ -98,9 +98,9 @@ const Services = () => {
         <section className="services-deep-dive">
           <div className="services-deep-dive-container">
             <div className="deep-dive-header">
-              <h2 className="deep-dive-title">Deep Dive into Services</h2>
+              <h2 className="deep-dive-title">Mergulho Profundo nos Serviços</h2>
               <p className="deep-dive-subtitle">
-                Expand each service to see: Outcomes / Deliverables / Timeline / Fit
+                Expanda cada serviço para ver: Resultados / Entregas / Prazo / Fit
               </p>
             </div>
 
@@ -141,7 +141,7 @@ const Services = () => {
 
                       <div className="service-details-grid">
                         <div className="detail-card">
-                          <h4 className="detail-title">Outcomes</h4>
+                          <h4 className="detail-title">Resultados</h4>
                           <ul className="detail-list">
                             {service.outcomes.map((outcome, i) => (
                               <li key={i}>
@@ -155,7 +155,7 @@ const Services = () => {
                         </div>
 
                         <div className="detail-card">
-                          <h4 className="detail-title">Deliverables</h4>
+                          <h4 className="detail-title">Entregas</h4>
                           <ul className="detail-list">
                             {service.deliverables.map((deliverable, i) => (
                               <li key={i}>
@@ -171,11 +171,11 @@ const Services = () => {
 
                       <div className="service-meta">
                         <div className="meta-item">
-                          <span className="meta-label">Timeline</span>
+                          <span className="meta-label">Prazo</span>
                           <span className="meta-value">{service.timeline}</span>
                         </div>
                         <div className="meta-item meta-item--wide">
-                          <span className="meta-label">Best Fit</span>
+                          <span className="meta-label">Para Quem Serve</span>
                           <span className="meta-value">{service.bestFit}</span>
                         </div>
                       </div>
@@ -190,22 +190,20 @@ const Services = () => {
         {/* Consultation CTA */}
         <section className="services-cta">
           <div className="services-cta-container">
-            <h2 className="services-cta-title">Not sure what you need?</h2>
+            <h2 className="services-cta-title">Não sabe por onde começar?</h2>
             <p className="services-cta-subtitle">
-              Let's map your current processes, identify bottlenecks, and recommend the right solution.
+              Vamos mapear seus processos atuais, identificar gargalos e recomendar a solução ideal.
             </p>
-            <a
-              href={calendlyLink}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/contact"
               className="cta-primary"
             >
-              Book a Discovery Call
+              Agende uma Conversa
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
-            </a>
+            </Link>
           </div>
         </section>
       </main>

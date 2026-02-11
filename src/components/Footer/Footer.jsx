@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   const whatsappNumber = "5524981058194";
-  const message = "Hi! I'd like to learn more about Facilita AI solutions";
+  const message = "Olá! Gostaria de saber mais sobre as soluções da Facilita AI";
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
   const calendlyLink = "https://calendly.com/facilitaai/discovery";
 
@@ -18,7 +18,7 @@ const Footer = () => {
             <span className="footer-brand-name">Facilita AI</span>
           </div>
           <p className="footer-tagline">
-            Build smarter systems. Convert faster. Software, CRM, and automation done right.
+            Sistemas inteligentes. Conversão acelerada. Software, CRM e automação feitos do jeito certo.
           </p>
           <div className="footer-social">
             <a href="mailto:contato@facilitaai.com.br" className="social-icon" aria-label="Email">
@@ -40,49 +40,39 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Column 2: Company */}
+        {/* Column 2: Empresa */}
         <div className="footer-column">
-          <h4>Company</h4>
+          <h4>Empresa</h4>
           <ul>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/services">Services</Link></li>
+            <li><Link to="/about">Sobre</Link></li>
             <li><Link to="/blog">Blog</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
+            <li><Link to="/contact">Contato</Link></li>
           </ul>
         </div>
 
-        {/* Column 3: Services */}
+        {/* Column 3: Navegação */}
         <div className="footer-column">
-          <h4>Services</h4>
+          <h4>Navegação</h4>
           <ul>
-            <li><Link to="/services">LIA - WhatsApp AI</Link></li>
-            <li><Link to="/services">CRM Platform</Link></li>
-            <li><Link to="/services">Custom Software</Link></li>
-            <li><Link to="/services">Integrations</Link></li>
+            <li><Link to="/">Início</Link></li>
+            <li><Link to="/services">Serviços</Link></li>
+            <li><Link to="/blog">Blog</Link></li>
+            <li><Link to="/about">Sobre</Link></li>
+            <li><Link to="/contact">Contato</Link></li>
           </ul>
         </div>
 
-        {/* Column 4: Get Started */}
-        <div className="footer-column footer-cta-column">
-          <h4>Get Started</h4>
-          <p className="footer-cta-text">
-            Ready to build a system that converts?
-          </p>
-          <a href={calendlyLink} target="_blank" rel="noopener noreferrer" className="footer-cta-button">
-            Book a Discovery Call
-          </a>
-        </div>
       </div>
 
       {/* Footer Bottom */}
       <div className="footer-bottom">
         <div className="footer-bottom-container">
           <p className="footer-copyright">
-            &copy; 2026 Facilita AI. All rights reserved.
+            &copy; 2026 Facilita AI. Todos os direitos reservados.
           </p>
           <div className="footer-legal">
-            <a href="#privacy">Privacy Policy</a>
-            <a href="#terms">Terms of Service</a>
+            <a href="#privacy">Política de Privacidade</a>
+            <a href="#terms">Termos de Uso</a>
           </div>
         </div>
       </div>

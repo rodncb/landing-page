@@ -1,8 +1,13 @@
+import blogWhatsApp from "../../images/Blog_WhatsApp.webp";
+import blogAI from "../../images/Blog_AI.webp";
+import blogCRM from "../../images/Blog_CRM.webp";
+
 export const blogPosts = [
     {
         id: 1,
         slug: "whatsapp-assistentes-inteligentes-2026",
-        title: "Automação, qualificação de leads e respostas instantâneas: entenda por que 2026 será o ano dos atendentes virtuais com IA",
+        image: blogWhatsApp,
+        title: "Como Assistentes Inteligentes no WhatsApp estão transformando o atendimento das pequenas empresas.",
         excerpt: "Nos últimos anos, o WhatsApp se tornou o principal canal de comunicação entre empresas e clientes no Brasil. Descubra como assistentes inteligentes estão revolucionando esse cenário.",
         category: "IA & Automação",
         date: "08 Dez, 2025",
@@ -147,6 +152,7 @@ export const blogPosts = [
     },
     {
         id: 2,
+        image: blogAI,
         slug: "tendencias-tecnologia-2026",
         title: "Tendências de tecnologia em 2026: O que vai transformar o seu negócio?",
         excerpt: "Conheça as principais tendências tecnológicas que prometem revolucionar o mercado em 2026, desde IA em todas as etapas até CRMs inteligentes.",
@@ -249,6 +255,7 @@ export const blogPosts = [
     },
     {
         id: 3,
+        image: blogCRM,
         slug: "crm-motor-vendas",
         title: "CRM como Motor de Vendas: O Sistema que Organiza, Acelera e Escala Resultados",
         excerpt: "Descubra como o CRM deixa de ser uma ferramenta de organização para se tornar o motor de vendas indispensável para o seu negócio.",

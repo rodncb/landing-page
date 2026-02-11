@@ -3,41 +3,41 @@ import "./Testimonials.css";
 const Testimonials = () => {
   const testimonials = [
     {
-      quote: "Facilita AI transformed our chaotic data into actionable insights.",
-      author: "Sarah Mitchell",
-      company: "TechFlow Consulting",
-      metric: "Saved 45 hours/week"
+      quote: "A LIA transformou nosso atendimento. Agora capturamos leads mesmo de madrugada.",
+      author: "Maria Silva",
+      company: "TechStart Brasil",
+      metric: "+150% leads qualificados"
     },
     {
-      quote: "The automation workflows cut our operational costs by 40%.",
-      author: "James Rodriguez",
-      company: "Apex Solutions",
-      metric: "$5K monthly savings"
+      quote: "Finalmente organizamos nosso pipeline. Sabemos exatamente onde cada negócio está.",
+      author: "João Santos",
+      company: "Consultoria Prime",
+      metric: "Pipeline 100% organizado"
     },
     {
-      quote: "LIA handles our leads 24/7. We never miss an opportunity now.",
-      author: "Emma Chen",
-      company: "GrowthLab",
-      metric: "3x lead capture"
+      quote: "A automação economizou 15 horas por semana da nossa equipe. ROI em 2 meses.",
+      author: "Ana Costa",
+      company: "Serviços Pro",
+      metric: "15h/semana economizadas"
     },
     {
-      quote: "The custom dashboard gave us real-time insights we never had before.",
-      author: "Michael Santos",
-      company: "DataFlow Inc",
-      metric: "80% faster reports"
+      quote: "O dashboard personalizado nos deu visibilidade em tempo real que nunca tivemos antes.",
+      author: "Carlos Mendes",
+      company: "DataFlow Brasil",
+      metric: "80% mais rápido nos relatórios"
     }
   ];
 
-  // Duplicar os testimonials para criar o efeito de loop infinito
+  // Duplicar para criar o efeito de loop infinito
   const allTestimonials = [...testimonials, ...testimonials];
 
   return (
     <section className="testimonials-section">
       <div className="testimonials-container">
         <div className="testimonials-header">
-          <h2 className="testimonials-title">What clients say</h2>
+          <h2 className="testimonials-title">O que nossos clientes dizem</h2>
           <p className="testimonials-subtitle">
-            Real feedback from businesses we've helped optimize and grow.
+            Feedback real de empresas que ajudamos a otimizar e crescer.
           </p>
         </div>
 
@@ -45,7 +45,7 @@ const Testimonials = () => {
           <div className="testimonials-track">
             {allTestimonials.map((testimonial, index) => (
               <div key={index} className="testimonial-card">
-                <p className="testimonial-quote">"{testimonial.quote}"</p>
+                <p className="testimonial-quote">&ldquo;{testimonial.quote}&rdquo;</p>
 
                 <div className="testimonial-author">
                   <p className="author-name">{testimonial.author}</p>
