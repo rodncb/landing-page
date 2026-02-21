@@ -111,7 +111,7 @@ const About = () => {
                   A mente técnica por trás das nossas soluções. Como desenvolvedor full stack, domina desde a arquitetura de sistemas e APIs até interfaces modernas e responsivas. Sua especialização em Inteligência Artificial permite integrar automações inteligentes em cada camada da aplicação, transformando problemas complexos em soluções funcionais e escaláveis.
                 </p>
                 <a
-                  href="https://github.com/rodrigobezerra"
+                  href="https://github.com/rodncb"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="team-link"
